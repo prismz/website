@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/index.css">
     <title>Hasan Zahra's Website</title>
+    <script src="/index.js"></script>
+
 </head>
 <body>
     <h1 class="name-header" id="name-header">
@@ -20,11 +22,10 @@
             <a href="https://github.com/hasanqz/">GitHub</a>
         </p>
     </span>
-
+    <button class="darkmode-btn" id="darkmode-btn" onclick="dark_mode()">Dark Mode</button>
     <p>
         Welcome to my personal website. Here I post my software projects, and (soon)
         articles I've written.
-
         <h2>About Me</h2>
         I am from the United States, and I live in Alabama.
 
@@ -34,7 +35,7 @@
         <h2>Projects</h2>
         <ul class="projects">
             <li class="project-name"><a href="https://github.com/HasanQZ/aurinstall">aurinstall</a></li>
-            <li class="project-details">My own AUR helper, written in pure Python with no external dependencies besides the Python stdlib (standard library) and external access to <code>git</code> and <code>pacman</code>.</li>
+            <li class="project-details">My own AUR helper written in Python. It includes many features, like multiple-keyword search, fully autoomatic updates, and recently introduced support for configuration files.</li>
             
             <li class="project-name"><a href="https://github.com/HasanQZ/hstatus">hstatus</a></li>
             <li class="project-details">A simple status script written in pure C for Linux. By default will use <code>xsetroot</code> to change the dwm status.</li>
@@ -46,10 +47,10 @@
             <li class="project-details">My custom build of the <a href="https://suckless.org/">suckless</a> <a href="https://dwm.suckless.org/">dynamic window manager</a>. (NOTE: you're going to want to modify the <code>config.h</code> file for your web browser, terminal, launcher, etc, as well as your own custom keybinds).</li>
         
             <li class="project-name"><a href="https://github.com/HasanQZ/website">website</a> (<a href="https://www.hasanzahra.xyz">visit</a>)</li>
-            <li class="project-details">My own website. Taught me a lot about website backend (theres no backend anymore).</li>
+            <li class="project-details">My own website. Taught me a lot about website backend (there's no backend anymore).</li>
 
             <li class="project-name"><a href="https://github.com/HasanQZ/alharamjaffa">alharamjaffa</a> (<a href="https://www.alharamjaffa.com">visit</a>)</li>
-            <li class="project-details">A website dedicated to the Palestinian village of Al Haram, Jaffa, just one part of <a href="https://www.reddit.com/r/list_palestine/comments/l43xgk/megalist_israels_crimes_controversies_full/">Zionist theivery and war crimes.</a></li>
+            <li class="project-details">A website dedicated to the Palestinian village of Al Haram, Jaffa, stolen as part of <a href="https://www.reddit.com/r/list_palestine/comments/l43xgk/megalist_israels_crimes_controversies_full/">Zionist theivery and war crimes.</a></li>
         </ul>
 
         <br><br>
