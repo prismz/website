@@ -105,13 +105,21 @@ code {
     text-align: center;
 }
 
-.tux {
+.tux,
+.no-facebook,
+.fsf,
+.gnu
+.gpl3 {
     width:45%;
     max-width: 200px;
-    /* float:right; */
-}
-.no-facebook {
-    /* float:left; */
     width: 45%;
     max-width: 200px;
+}
+
+.gnu {
+    text-align: center;
+}
+
+.gnu-inside {
+    width:30%;
 }
