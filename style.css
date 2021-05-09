@@ -1,0 +1,10 @@
+body {
+    max-width: 800px;
+    min-width: 340px;
+    margin: auto;
+}
+
+a,
+a:visited {
+    color: blue;
+}
