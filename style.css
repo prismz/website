@@ -65,13 +65,15 @@ nav ul li {
 }
 
 .projects-label,
-.articles-label {
+.articles-label, 
+.hosted-files-label {
     padding-bottom: 0;
     margin-bottom: 0;
     padding-top: 10px;
 }
 .projects-list,
-.articles-list {
+.articles-list,
+.files-list {
     list-style: none;
     padding: 0;
     margin-top:5px;
@@ -79,7 +81,9 @@ nav ul li {
 .projects-list li a,
 .projects-list li a:visited,
 .articles-list li a,
-.articles-list li a:visited {
+.articles-list li a:visited,
+.files-list a, 
+.files-list a:visited {
     color: blue;
     text-decoration: none;
 }

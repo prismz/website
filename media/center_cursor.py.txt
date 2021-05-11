@@ -1,0 +1,15 @@
+import os
+import subprocess
+
+primary_output = subprocess.getoutput('xrandr | grep primary')
+dims = primary_output.split(' ')[3]
+
+sdims, offset = dims.split('+', 1) 
+sw, sh = sdims.split('x')
+ow, oh = offset.split('+')
+
+nx = int(sw) // 2 + int(ow)
+ny = int(sh) // 2
+
+os.system(f'xdotool mousemove {nx} {ny}')
+os.system(f'xdotool click 1')
