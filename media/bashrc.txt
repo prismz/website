@@ -23,7 +23,6 @@ alias n='nvim'
 alias sx='cd && startx'
 alias rb_='reboot'
 alias l='ls'
-alias fucking='sudo'
 alias murder='killall -9'
 
 alias sl='ls'
