@@ -5,12 +5,15 @@ alias la='ls -a'
 alias lla='ls -la'
 alias l1='ls -1'
 
-alias p='sudo apt-get install'
-alias ps='sudo apt search'
-alias pr='sudo apt remove'
-alias pq='sudo apt list'
+alias p='sudo pacman -S'
+alias ps='sudo pacman -Ss'
+alias pr='sudo pacman -R'
+alias pq='sudo pacman -Q'
 
-alias update='sudo apt-get update && sudo apt-get upgrade'
+alias y='aurinstall install'
+alias ys='aurinstall search'
+
+alias update='sudo pacman -Syu'
 alias bashrc='nvim ~/.bashrc && source ~/.bashrc'
 alias vimrc='nvim ~/.vimrc'
 
