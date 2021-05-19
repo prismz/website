@@ -1,43 +1,69 @@
-PS1="[\W] λ "
+# make sure dirs are in path
+PATH=$PATH:/$HOME/.local/bin
+PATH=$PATH:/sbin/
+PATH=$PATH:/home/prism/.ghcup/bin
 
+# shell prompt
+PS1="[\W] "
+
+# ls aliases
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias l1='ls -1'
+alias sl='ls' # for typos
 
+# pacman aliases
 alias p='sudo pacman -S'
 alias ps='sudo pacman -Ss'
 alias pr='sudo pacman -R'
 alias pq='sudo pacman -Q'
+alias depclean='sudo pacman -Rsn $(pacman -Qqtd)'
 
+# aurinstall aliases
 alias y='aurinstall install'
 alias ys='aurinstall search'
+alias update='aurinstall update'
 
-alias update='sudo pacman -Syu'
+# config file aliases
 alias bashrc='nvim ~/.bashrc && source ~/.bashrc'
 alias vimrc='nvim ~/.vimrc'
 
-alias cls='clear'
+# vault aliases
+alias vault-open='sudo cryptsetup luksOpen /dev/sdc2 sdc2 && sudo mount /dev/mapper/sdc2 ~/vault && cd ~/vault'
+alias vault-close='sudo umount ~/vault && sudo cryptsetup luksClose /dev/mapper/sdc2'
 
+# command replacements
+alias cls='clear'
 alias cp='cp -r'
 alias c='cat'
 alias nv='nvim'
 alias n='nvim'
+alias ht='htop'
+alias cm='cmus'
 alias sx='cd && startx'
-alias rb_='reboot'
+alias rb_='sudo reboot'
 alias l='ls'
 alias murder='killall -9'
-
-alias sl='ls'
-alias ytdl='youtube-dl'
-alias yt='youtube-dl'
-
+alias obliterate='srm -rvz'
+alias quick-obliterate='srm -rlvz'
 alias ssh='TERM="xterm" ssh'
 alias addkey='gpg --recv-keys'
 
+# youtube-dl aliases
+alias ytdl='youtube-dl'
+alias yt='youtube-dl'
+alias ytda='youtube-dl -x --audio-format mp3'
+
+# directory aliases
 alias music='cd ~/hdd1/Music/'
 alias devel='cd ~/development'
 alias dl='cd ~/downloads'
 alias docs='cd ~/docs'
 alias soft='cd ~/software'
-alias cm='cmus'
+
+# set neovim as editor
+EDITOR=nvim
+export EDITOR=nvim
+
+
