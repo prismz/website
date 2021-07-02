@@ -1,6 +1,6 @@
 :root {
-    --bg: #ffffff;
-    --fg: #000000;
+    --bg: #000000;
+    --fg: #ffffff;
     --link: #0645ad;
     --link_v: #0b0080;
     --link_h: #06e;
@@ -21,6 +21,8 @@ body {
     line-height: 1.5em;
     /* font-weight: 400; */
     padding: 1em;
+    background-color: black;
+    color: white;
 }
 p {
     margin: 1em 0;
