@@ -1,10 +1,9 @@
 # make sure dirs are in path
 PATH=$PATH:/$HOME/.local/bin
 PATH=$PATH:/sbin/
-PATH=$PATH:/home/prism/.ghcup/bin
 
 # shell prompt
-PS1="[\W] "
+PS1="[\W] λ "
 
 # ls aliases
 alias ll='ls -l'
@@ -13,25 +12,21 @@ alias lla='ls -la'
 alias l1='ls -1'
 alias sl='ls' # for typos
 
-# pacman aliases
-alias p='sudo pacman -S'
-alias ps='sudo pacman -Ss'
-alias pr='sudo pacman -R'
-alias pq='sudo pacman -Q'
-alias depclean='sudo pacman -Rsn $(pacman -Qqtd)'
+# apt aliases
+alias p='sudo apt install'
+alias ps='sudo apt search'
+alias pr='sudo apt remove'
+alias update='sudo apt-get update && sudo apt-get upgrade'
+alias depclean='sudo apt autoremove'
 
-# aurinstall aliases
-alias y='aurinstall install'
-alias ys='aurinstall search'
-alias update='aurinstall update'
+# aurinstall aliases (enable on arch)
+# alias y='aurinstall install'
+# alias ys='aurinstall search'
+# alias update='aurinstall update'
 
 # config file aliases
 alias bashrc='nvim ~/.bashrc && source ~/.bashrc'
 alias vimrc='nvim ~/.vimrc'
-
-# vault aliases
-alias vault-open='sudo cryptsetup luksOpen /dev/sdc2 sdc2 && sudo mount /dev/mapper/sdc2 ~/vault && cd ~/vault'
-alias vault-close='sudo umount ~/vault && sudo cryptsetup luksClose /dev/mapper/sdc2'
 
 # command replacements
 alias cls='clear'
@@ -43,7 +38,6 @@ alias ht='htop'
 alias cm='cmus'
 alias sx='cd && startx'
 alias rb_='sudo reboot'
-alias l='ls'
 alias murder='killall -9'
 alias obliterate='srm -rvz'
 alias quick-obliterate='srm -rlvz'
@@ -65,5 +59,3 @@ alias soft='cd ~/software'
 # set neovim as editor
 EDITOR=nvim
 export EDITOR=nvim
-
-
