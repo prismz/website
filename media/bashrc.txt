@@ -1,28 +1,30 @@
 # make sure dirs are in path
 PATH=$PATH:/$HOME/.local/bin
 PATH=$PATH:/sbin/
+PATH=$PATH:/$HOME/.cargo/bin
 
 # shell prompt
 PS1="[\W] λ "
 
 # ls aliases
-alias ll='ls -l'
+alias ll='ls -lh'
 alias la='ls -a'
-alias lla='ls -la'
+alias lla='ls -lah'
 alias l1='ls -1'
 alias sl='ls' # for typos
 
 # apt aliases
-alias p='sudo apt install'
-alias ps='sudo apt search'
-alias pr='sudo apt remove'
-alias update='sudo apt-get update && sudo apt-get upgrade'
-alias depclean='sudo apt autoremove'
+alias p='sudo pacman -S'
+alias ps='sudo pacman -Ss'
+alias pr='sudo pacman -R'
+alias pq='pacman -Q'
+alias update='sudo pacman -Syu'
+alias depclean='sudo pacman -Rsn $(sudo pacman -Qqtd)'
 
 # aurinstall aliases (enable on arch)
-# alias y='aurinstall install'
-# alias ys='aurinstall search'
-# alias update='aurinstall update'
+alias y='aurinstall install'
+alias ys='aurinstall search'
+alias update='aurinstall update'
 
 # config file aliases
 alias bashrc='nvim ~/.bashrc && source ~/.bashrc'
@@ -30,7 +32,7 @@ alias vimrc='nvim ~/.vimrc'
 
 # command replacements
 alias cls='clear'
-alias cp='cp -r'
+alias cp='cp -rv'
 alias c='cat'
 alias nv='nvim'
 alias n='nvim'
@@ -43,6 +45,12 @@ alias obliterate='srm -rvz'
 alias quick-obliterate='srm -rlvz'
 alias ssh='TERM="xterm" ssh'
 alias addkey='gpg --recv-keys'
+alias python='python3'
+alias sl='slock'
+alias up='uptime'
+alias rm='rm -rf'
+alias neo='neofetch'
+alias hackerman='clear; neofetch'
 
 # youtube-dl aliases
 alias ytdl='youtube-dl'
@@ -51,11 +59,16 @@ alias ytda='youtube-dl -x --audio-format mp3'
 
 # directory aliases
 alias music='cd ~/hdd1/Music/'
-alias devel='cd ~/development'
-alias dl='cd ~/downloads'
+alias devel='cd ~/devel'
+alias dl='cd ~/dl'
 alias docs='cd ~/docs'
 alias soft='cd ~/software'
 
 # set neovim as editor
 EDITOR=nvim
 export EDITOR=nvim
+
+if [ $TERM = "st-256color" ]
+then
+    tput smkx
+fi
