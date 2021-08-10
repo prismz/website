@@ -24,7 +24,7 @@ alias depclean='sudo pacman -Rsn $(sudo pacman -Qqtd)'
 # aurinstall aliases (enable on arch)
 alias y='aurinstall install'
 alias ys='aurinstall search'
-alias update='aurinstall update'
+alias update='sudo pacman -Syu && aurinstall update'
 
 # config file aliases
 alias bashrc='nvim ~/.bashrc && source ~/.bashrc'
@@ -48,7 +48,7 @@ alias addkey='gpg --recv-keys'
 alias python='python3'
 alias sl='slock'
 alias up='uptime'
-alias rm='rm -rf'
+alias rm='rm -rfv'
 alias neo='neofetch'
 alias hackerman='clear; neofetch'
 
@@ -58,11 +58,7 @@ alias yt='youtube-dl'
 alias ytda='youtube-dl -x --audio-format mp3'
 
 # directory aliases
-alias music='cd ~/hdd1/Music/'
-alias devel='cd ~/devel'
-alias dl='cd ~/dl'
-alias docs='cd ~/docs'
-alias soft='cd ~/software'
+alias music='cd ~/hdd1/mus/'
 
 # set neovim as editor
 EDITOR=nvim
