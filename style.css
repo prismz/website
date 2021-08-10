@@ -119,3 +119,8 @@ nav ul li {
     color: var(--link);
     text-decoration: none;
 }
+
+p a {
+    color: blue;
+    text-decoration: none;
+}
