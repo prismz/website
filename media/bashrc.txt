@@ -51,6 +51,7 @@ alias up='uptime'
 alias rm='rm -rfv'
 alias neo='neofetch'
 alias hackerman='clear; neofetch'
+alias server='TERM="xterm" ssh root@hasanzahra.xyz'
 
 # youtube-dl aliases
 alias ytdl='youtube-dl'
@@ -58,7 +59,7 @@ alias yt='youtube-dl'
 alias ytda='youtube-dl -x --audio-format mp3'
 
 # directory aliases
-alias music='cd ~/hdd1/mus/'
+alias mus='cd ~/aud/mus/'
 
 # set neovim as editor
 EDITOR=nvim
