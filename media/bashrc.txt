@@ -65,6 +65,7 @@ alias mus='cd ~/aud/mus/'
 EDITOR=nvim
 export EDITOR=nvim
 
+# enable delete key for st
 if [ $TERM = "st-256color" ]
 then
     tput smkx
