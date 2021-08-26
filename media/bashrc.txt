@@ -1,7 +1,6 @@
 # make sure dirs are in path
 PATH=$PATH:/$HOME/.local/bin
 PATH=$PATH:/sbin/
-PATH=$PATH:/$HOME/.cargo/bin
 
 # shell prompt
 PS1="[\W] λ "
@@ -13,18 +12,27 @@ alias lla='ls -lah'
 alias l1='ls -1'
 alias sl='ls' # for typos
 
-# apt aliases
-alias p='sudo pacman -S'
-alias ps='sudo pacman -Ss'
-alias pr='sudo pacman -R'
-alias pq='pacman -Q'
-alias update='sudo pacman -Syu'
-alias depclean='sudo pacman -Rsn $(sudo pacman -Qqtd)'
+# portage aliases
+alias e='doas emerge --ask'
+alias es='doas emerge --search'
+alias er='doas emerge --deselect'
+alias eq='~/dev/portage-utils/portage-installed'
+alias eu='doas emerge-webrsync && doas emerge --ask --update --deep --with-bdeps=y --newuse @world'
+alias ed='doas emerge --depclean --ask'
+alias fixtty='printf "\e]2;st\a" && tput smkx'  # emerge has a tendency to mess up st's titles.
+alias whatscompiling='watch -cn 3 doas genlop -ci'
+alias compile_kernel='cd /usr/src/linux \
+    && doas make modules_prepare && doas emerge --ask @module-rebuild && doas make -j8 && doas make modules_install && doas make install && doas grub-mkconfig -o /boot/grub/grub.cfg && doas genkernel --install --kernel-config=/usr/src/linux/.config initramfs'
 
 # aurinstall aliases (enable on arch)
-alias y='aurinstall install'
-alias ys='aurinstall search'
-alias update='sudo pacman -Syu && aurinstall update'
+# alias y='aurinstall install'
+# alias ys='aurinstall search'
+# alias update='doas pacman -Syu && aurinstall update'
+
+# gentoo aliases
+alias kernel='cd /usr/src/linux'
+alias makeconf='doas nvim /etc/portage/make.conf'
+alias portage='cd /etc/portage'
 
 # config file aliases
 alias bashrc='nvim ~/.bashrc && source ~/.bashrc'
@@ -39,19 +47,20 @@ alias n='nvim'
 alias ht='htop'
 alias cm='cmus'
 alias sx='cd && startx'
-alias rb_='sudo reboot'
+alias rb_='doas reboot'
 alias murder='killall -9'
 alias obliterate='srm -rvz'
 alias quick-obliterate='srm -rlvz'
 alias ssh='TERM="xterm" ssh'
 alias addkey='gpg --recv-keys'
 alias python='python3'
-alias sl='slock'
 alias up='uptime'
 alias rm='rm -rfv'
 alias neo='neofetch'
 alias hackerman='clear; neofetch'
 alias server='TERM="xterm" ssh root@hasanzahra.xyz'
+alias mullvad='cd ~/dl/mullvad_config_linux_us_atl/; doas openvpn --config /etc/openvpn/openvpn.conf'
+alias amiconnected='curl https://am.i.mullvad.net/connected'
 
 # youtube-dl aliases
 alias ytdl='youtube-dl'
@@ -65,8 +74,6 @@ alias mus='cd ~/aud/mus/'
 EDITOR=nvim
 export EDITOR=nvim
 
-# enable delete key for st
-if [ $TERM = "st-256color" ]
-then
-    tput smkx
-fi
+tput smkx
+
+echo "$(whoami)@$(hostname) $(uname -rm)"
