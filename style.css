@@ -124,3 +124,10 @@ p a {
     color: blue;
     text-decoration: none;
 }
+code {
+    background-color: #2e2e2e;
+}
+
+.files-list {
+    background-color: var(--bg);
+}

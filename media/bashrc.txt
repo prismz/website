@@ -21,8 +21,7 @@ alias eu='doas emerge-webrsync && doas emerge --ask --update --deep --with-bdeps
 alias ed='doas emerge --depclean --ask'
 alias fixtty='printf "\e]2;st\a" && tput smkx'  # emerge has a tendency to mess up st's titles.
 alias whatscompiling='watch -cn 3 doas genlop -ci'
-alias compile_kernel='cd /usr/src/linux \
-    && doas make modules_prepare && doas emerge --ask @module-rebuild && doas make -j8 && doas make modules_install && doas make install && doas grub-mkconfig -o /boot/grub/grub.cfg && doas genkernel --install --kernel-config=/usr/src/linux/.config initramfs'
+alias ec='doas genlop -t'
 
 # aurinstall aliases (enable on arch)
 # alias y='aurinstall install'
@@ -40,26 +39,27 @@ alias vimrc='nvim ~/.vimrc'
 
 # command replacements
 alias cls='clear'
-alias cp='cp -rv'
-alias c='cat'
-alias nv='nvim'
-alias n='nvim'
 alias ht='htop'
 alias cm='cmus'
 alias sx='cd && startx'
 alias rb_='doas reboot'
 alias murder='killall -9'
-alias obliterate='srm -rvz'
-alias quick-obliterate='srm -rlvz'
+alias obliterate='srm -rv'
+alias quick-obliterate='srm -rlv'
 alias ssh='TERM="xterm" ssh'
 alias addkey='gpg --recv-keys'
 alias python='python3'
 alias up='uptime'
+
 alias rm='rm -rfv'
+alias mv='mv -v'
+alias cp='cp -rv'
+
 alias neo='neofetch'
 alias hackerman='clear; neofetch'
-alias server='TERM="xterm" ssh root@hasanzahra.xyz'
-alias mullvad='cd ~/dl/mullvad_config_linux_us_atl/; doas openvpn --config /etc/openvpn/openvpn.conf'
+
+alias mullvad='doas openvpn --config /etc/openvpn/openvpn.conf; doas /etc/openvpn/update-resolv-conf.py'
+alias fixdns='doas /etc/openvpn/update-resolv-conf.py'
 alias amiconnected='curl https://am.i.mullvad.net/connected'
 
 # youtube-dl aliases
