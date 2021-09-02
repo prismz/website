@@ -1,0 +1,42 @@
+/* BEGIN HEADER.CSS */
+
+nav {
+    padding-bottom: 3em;
+}
+.name-header a,
+.name-header a:visited {
+    color: var(--fg);
+    text-decoration: none;
+}
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    overflow: hidden;
+}
+nav ul li {
+    display: inline-block;
+    list-style-type: none;
+}
+
+.nav-left {
+    float: left;
+}
+
+.nav-left ul li {
+    float: left;
+}
+
+.nav-right {
+    float: right;
+}
+.nav-right ul li {
+    padding-left: 12px;
+}
+.nav-right ul li a,
+.nav-right ul li a:visited {
+    color: var(--fg);
+    text-decoration: none;
+}
+
+/* END HEADER.CSS */
