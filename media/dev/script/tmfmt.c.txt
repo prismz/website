@@ -1,3 +1,4 @@
+/* program to format time, used in my bashrc. no license or anything - use for whatever you want. */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
