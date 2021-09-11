@@ -2,8 +2,20 @@
 PATH=$PATH:/$HOME/.local/bin
 PATH=$PATH:/sbin/
 
-# shell prompt
-PS1="[\W] λ "
+function timer_start {
+  timer=${timer:-$SECONDS}
+}
+
+function timer_stop {
+  timer_show=$(($SECONDS - $timer))
+  unset timer
+}
+
+trap 'timer_start' DEBUG
+PROMPT_COMMAND=timer_stop
+
+PS1='[\[\e[0;1m\]\W\[\e[0m\] \u@\h - $(tmfmt ${timer_show})] \[\e[0;1m\]λ\[\e[0m\] '
+
 
 # ls aliases
 alias ll='ls -lh'
@@ -19,7 +31,6 @@ alias er='doas emerge --deselect'
 alias eq='~/dev/portage-utils/portage-installed'
 alias eu='doas emerge-webrsync && doas emerge --ask --update --deep --with-bdeps=y --newuse @world'
 alias ed='doas emerge --depclean --ask'
-# alias fixtty='printf "\e]2;st\a" && tput smkx'  # emerge has a tendency to mess up st's titles.
 alias whatscompiling='watch -cn 3 doas genlop -ci'
 alias ec='doas genlop -t'
 
@@ -51,6 +62,7 @@ alias addkey='gpg --recv-keys'
 alias python='python3'
 alias up='uptime'
 alias neomutt='gpg -d ~/.password-store/hasan\@hasanzahra.xyz.gpg && mw -y hasan@hasanzahra.xyz && neomutt'
+alias ntpsync='doas ntpdate -b pool.ntp.org; doas hwclock -w'
 
 alias rm='rm -rfv'
 alias mv='mv -v'
@@ -74,7 +86,3 @@ alias mus='cd ~/aud/mus/'
 # set neovim as editor
 EDITOR=nvim
 export EDITOR=nvim
-
-tput smkx
-
-echo "$(whoami)@$(hostname) $(uname -rm)"
