@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdarg.h>
+
+void
+die(char* fmt, ...)
+{
+    va_list vl;
+    va_start(vl, fmt);
+
+    vfprintf(stderr, fmt, vl);
+
+    va_end(vl);
+
+    exit(EXIT_FAILURE);
+}
+
+int
+print_unit(int n, char* unit)
+{
+    if (n == 0)
+        return 1;
+
+    printf("%d %s", n, unit);
+    if (n > 1)
+        printf("s");
+
+    return 0;
+}
+
+void
+fmt_sec(int t)
+{
+    int day, hour, min, sec;
+    day = t / 60 / 60 / 24;
+    hour = t / 60 / 60 % 24;
+    min = t / 60 % 60;
+    sec = t % 60;
+
+    if (!print_unit(day, "day") && hour != 0 && min != 0)
+        printf(", ");
+    if (!print_unit(hour, "hour") && min != 0)
+        printf(", ");
+    if (!print_unit(min, "minute"))
+        printf(", ");
+    if (sec != 0)
+        print_unit(sec, "second");
+    else
+        printf("0 seconds");
+    printf("\n");
+}
+
+int
+main(int argc, char** argv)
+{
+    if (argc < 2)
+        die("tmfmt: fatal: please provide a timestamp in seconds.\n");
+
+    char* b;
+    int val = (int)strtol(argv[1], &b, 10);
+    fmt_sec(val);
+}
