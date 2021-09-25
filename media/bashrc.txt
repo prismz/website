@@ -14,8 +14,8 @@ function timer_stop {
 trap 'timer_start' DEBUG
 PROMPT_COMMAND=timer_stop
 
+# [bolded current_dir_basename user@system - x seconds] bolded_lambda
 PS1='[\[\e[0;1m\]\W\[\e[0m\] \u@\h - $(tmfmt ${timer_show})] \[\e[0;1m\]λ\[\e[0m\] '
-
 
 # ls aliases
 alias ll='ls -lh'
@@ -48,10 +48,13 @@ alias portage='cd /etc/portage'
 alias bashrc='nvim ~/.bashrc && source ~/.bashrc'
 alias vimrc='nvim ~/.vimrc'
 
+# doas masterrace
+alias sudo='doas'
+
 # command replacements
 alias cls='clear'
-alias ht='htop'
-alias cm='cmus'
+alias h='htop'
+alias c='cmus'
 alias sx='cd && startx'
 alias rb_='doas reboot'
 alias murder='killall -9'
@@ -61,7 +64,6 @@ alias ssh='TERM="xterm" ssh'
 alias addkey='gpg --recv-keys'
 alias python='python3'
 alias up='uptime'
-alias neomutt='gpg -d ~/.password-store/hasan\@hasanzahra.xyz.gpg && mw -y hasan@hasanzahra.xyz && neomutt'
 alias ntpsync='doas ntpdate -b pool.ntp.org; doas hwclock -w'
 
 alias rm='rm -rfv'
