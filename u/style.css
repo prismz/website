@@ -3,14 +3,17 @@ html {
     margin: 1em auto;
     max-width: 40em;
 }
+
 a, a:visited {
     color:blue;
 }
+
 h2 a, h2 a:visited {
     text-decoration: none;
     color: black;
 
 }
+
 ul {
     list-style: none;
     padding: 0;
@@ -29,13 +32,11 @@ footer {
 }
 
 pre, code {
-    /* background-color: gray; */
     background-color: #e3e3e3;
     font-family: monaco, monospace;
     font-size: 14px;
     overflow-x: auto;
     padding: 0.75em;
-    /* width:fit-content; */
 }
 
 footer a, footer a:visited {
