@@ -1,5 +1,6 @@
 import os
 import time
+import sys
 
 HTML_HEADER = """<head>
     <meta charset="UTF-8">
@@ -61,19 +62,27 @@ def format_article(metadata, header, footer):
 
     return full
 
-if __name__ == '__main__':
+def main():
     srcdir = 'c'
     dstdir = 'd'
-    while 1:
-        st = time.time()
-        header = read_file('u/header.html')
-        footer = read_file('u/footer.html')
-        for a in os.listdir('c'):
-            c = format_article(parse_article(f'c/{a}'), header, footer)
-            f = open(f'{dstdir}/{a}', 'w+')
-            f.write(c)
-            f.close()
+    st = time.time()
+    header = read_file('u/header.html')
+    footer = read_file('u/footer.html')
+    for a in os.listdir('c'):
+        c = format_article(parse_article(f'c/{a}'), header, footer)
+        f = open(f'{dstdir}/{a}', 'w+')
+        f.write(c)
+        f.close()
 
-        et = time.time() - st
-        print(f'completed in {round(et, 5)}')
-        time.sleep(2)
+    et = time.time() - st
+    print(f'completed in {round(et, 5)}')
+
+if __name__ == '__main__':
+    if len(sys.argv) >= 2 and sys.argv[1] == 'reload':
+        while 1:
+            main()
+            time.sleep(2)
+    else:
+        main()
+
+    
