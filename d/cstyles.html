@@ -4,14 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>why? - hasan zahra's website</title>
+    <title>c programming styles - the one i use and why - hasan zahra's website</title>
     <link rel="stylesheet" href="/u/style.css">
 </head>
 <body>
 <h2><a href="/">hasan zahra</a></h2>
+<h2>c programming styles - the one i use and why</h2>
+<ul class="section-list">
+    <li class="secl-header"><h4>content</h4></li>
+    <li class="secl-item">1. <a href="#brackets">brackets</a></li>
+    <li class="secl-item">2. <a href="#whitespace">whitespace</a></li>
+    <li class="secl-item">3. <a href="#function_declaration">function declaration</a></li>
+    <li class="secl-item">4. <a href="#comments">comments</a></li>
+    <li class="secl-item">5. <a href="#why">why?</a></li>
+</ul><br>
+
 <!--META DATE 9-29-21 -->
 <!--META CATEGORY software-->
-<h3>c programming styles - the one i use and why</h3>
 
 <p>
     there are many c programming styles. c programming style
@@ -19,7 +28,7 @@
     spaces around operators, using parenthesis for sizeof(), comments, etc.
 </p>
 
-<h4>brackets</h4>
+<h4 id="brackets">brackets [<a href="#brackets">#</a>]</h4>
 <p>
     some use brackets on the same line, some use them on the next.
     i personally add them on the same line, unless declaring a function,
@@ -48,7 +57,7 @@ if (condition)
 </p>
 
 
-<h4>whitespace</h4>
+<h4 id="whitespace">whitespace [<a href="#whitespace">#</a>]</h4>
 <p>
     i use spaces instead of tabs, a tab being 4 spaces. some prefer
     using 8 instead, the linux kernel being a primary example. i
@@ -77,7 +86,7 @@ main(void)
 </pre>
 </p>
 
-<h4>function declaration</h4>
+<h4 id="function_declaration">function declaration [<a href="#function_declaration">#</a>]</h4>
 <p>
     to declare a function, i put the return type and modifiers
     on one line, the function name and arguments on the next,
@@ -103,7 +112,7 @@ noargs(void)
 </pre>
 </p>
 
-<h4>comments</h4>
+<h4 id="comments">comments [<a href="#comments">#</a>]</h4>
 <p>
     comments that fit on one line are denoted using <code>/* comment */</code>.
     comments that take up more than one line have an opening line, the contents
@@ -132,7 +141,7 @@ function(int a)
     inline comments have 2 spaces to separate the code from the comment.
 </p>
 
-<h4>why?</h4>
+<h4 id="why">why? [<a href="#why">#</a>]</h4>
 <p>
     i've developed this style over time, taking inspiration
     from other styles, copying what i liked and leaving what

@@ -44,6 +44,7 @@ main(void)
     for (int i = 0; i < 3; i++)
         dims = strtok(NULL, " ");
 
+    /* evil variable name */
     char* _sdims = strtok(dims, "+");
     char* sdims = strdup(_sdims);
     if (sdims == NULL)
