@@ -42,7 +42,7 @@ def parse_article(filepath):
     have_content = False
     metadata['raw_body'] = ''
     metadata['sections'] = []
-    metadata['content_list'] = '<ul class="section-list">\n    <li class="secl-header"><h4>content</h4></li>\n'
+    metadata['content_list'] = '<br><ul class="section-list">\n    <li class="secl-header"><h4>content</h4></li>\n'
     metadata['content_added'] = 0
     for line in c.splitlines():
         # h4 is reserved for sections
