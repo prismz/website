@@ -90,13 +90,15 @@ main(void)
 <p>
     to declare a function, i put the return type and modifiers
     on one line, the function name and arguments on the next,
-    and then the opening bracket on the next line. for example:
+    and then the opening bracket on the next line. this is
+    done to avoid functions with a lot of arguments taking
+    up too much space on a line. for example:
 
 <pre>
 int
 add(int a, int b)
 {
-    return a + b
+    return a + b;
 }
 </pre>
     if a function has no arguments, always put <code>void</code>
