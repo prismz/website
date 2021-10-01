@@ -6,4 +6,3 @@ c = content (unformatted)
 d = destination content (formatted using gen.py)
 m = server hosted files
 u = misc things
-

@@ -115,7 +115,7 @@ def main():
         print(f'err in main(): {e}')
 
 if __name__ == '__main__':
-    if len(sys.argv) >= 2 and sys.argv[1] == 'reload':
+    if len(sys.argv) >= 2 and sys.argv[1] == 'debug':
         while 1:
             try:
                 main()
@@ -123,7 +123,7 @@ if __name__ == '__main__':
             except Exception as e:
                 print(f'err in __name == \'__main__\': {e}')
     else:
-        print('pass arg "reload" to constantly regenerate - (for debugging)')
+        print('pass arg "debug" to constantly regenerate - (for debugging)')
         main()
 
 
