@@ -57,3 +57,22 @@ footer a, footer a:visited {
     text-decoration: none;
     color:gray
 }
+
+.section-list {
+    display:table-cell;
+    background-color: #eee;
+    padding-right: 10px;
+}
+
+.secl-item {
+    padding-left: 25px;
+}
+
+.secl-item a {
+    text-decoration: none;
+}
+
+.secl-header {
+    padding-left: 7px;
+    width: 10px;
+}

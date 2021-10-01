@@ -9,20 +9,58 @@
 </head>
 <body>
 <h2><a href="/">hasan zahra</a></h2>
+<h3>writing a static site generator</h3>
+<br><ul class="section-list">
+    <li class="secl-header"><h4>content</h4></li>
+    <li class="secl-item">1. <a href="#why_not_markdown">why not markdown?</a></li>
+    <li class="secl-item">2. <a href="#how_it_works">how it works</a></li>
+    <li class="secl-item">3. <a href="#the_result">the result</a></li>
+    <li class="secl-item">4. <a href="#the_code">the code</a></li>
+</ul><br>
+
 <!--META DATE 9-29-21 -->
 <!--META CATEGORY software-->
-<h3>writing a static site generator</h3>
 
+<h4 id="why_not_markdown">why not markdown? [<a href="#why_not_markdown">#</a>]</h4>
 <p>
     when i started my new website, i needed a new and better way to generate articles.
     most people use markdown and have a program to convert it to html and add a header and footer,
-    but i don't really like markdown. i already know html, so why not just have the article
-    be in html? each article is stored in a source directory, with no html boilerplate - just
+    but i don't want to learn markdown. i already know html, so why not just have the article
+    be in html?
+</p>
+
+<h4 id="how_it_works">how it works [<a href="#how_it_works">#</a>]</h4>
+<p>
+    each article is stored in a source directory, with no html boilerplate - just
     the body of the article and the title and some comments at the top for metadata. a python
-    script goes through each file in the directory, parses the title, adds a header and footer, 
-    and then copies the file to a destination directory. the makefile on my server then deletes
-    the directory with unformatted articles. if you'd like to see the code that generated the 
-    current version of the website, you can look at it directly <a href="/gen.py">here</a>.
+    script goes through each file in the directory, performing the following actions:
+
+    <ul style="margin-left: 50px;">
+        <li type="1">parse all comments containing metadata</li>
+        <li type="1">parse the title</li>
+        <li type="1">parse each &lt;h4&gt; tag into a content list</li>
+        <li type="1">convert each &lt;h4&gt; to have an id</li>
+        <li type="1">add header and footer</li>
+    </ul>
+</p>
+
+<h4 id="the_result">the result [<a href="#the_result">#</a>]</h4>
+<p>
+    i'm actually quite happy with how the site turned out. it
+    looks simple, and a pretty short python script generates
+    a rather complete looking site. it may be mostly plain text,
+    but the way the formatted html looks in the files and
+    rendered in the browser is honestly much better than i
+    expected. the only downside is that there is (currently)
+    no way to create the homepage, so it must be updated
+    manually for each new article. this is a fairly simple
+    addition, and one i plan to implement soon.
+</p>
+
+<h4 id="the_code">the code [<a href="#the_code">#</a>]</h4>
+<p>
+    you can view the most up-to-date version of the code 
+    <a href="/gen.py">here</a>.
 </p>
 
 <footer>
