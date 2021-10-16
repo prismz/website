@@ -79,6 +79,8 @@ def parse_article(filepath):
     metadata['content_list'] += '</ul><br>\n\n'
     if have_content:
         metadata['raw_body'] = f'<h3>{metadata["title"]}</h3>\n' + metadata['content_list'] +  metadata['raw_body']
+    else:
+        metadata['raw_body'] = f'<h3>{metadata["title"]}</h3>\n' + metadata['raw_body']
 
     return metadata
 
