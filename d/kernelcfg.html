@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>linux kernel configuration - hasan zahra's website</title>
+    <link rel="stylesheet" href="/u/style.css">
+</head>
+<body>
+<h2><a href="/">hasan zahra</a></h2>
+<h3>linux kernel configuration</h3>
+<br><ul class="section-list">
+    <li class="secl-header"><h4>content</h4></li>
+    <li class="secl-item">1. <a href="#introduction">introduction</a></li>
+    <li class="secl-item">2. <a href="#getting_into_the_menu">getting into the menu</a></li>
+    <li class="secl-item">3. <a href="#general_setup">general setup</a></li>
+    <li class="secl-item">4. <a href="#processor_type_and_features">processor type and features</a></li>
+    <li class="secl-item">5. <a href="#power_management_and_acpi_options">power management and acpi options</a></li>
+    <li class="secl-item">6. <a href="#bus_options">bus options</a></li>
+    <li class="secl-item">7. <a href="#binary_emulations">binary emulations</a></li>
+    <li class="secl-item">8. <a href="#firmware_drivers">firmware drivers</a></li>
+    <li class="secl-item">9. <a href="#virtualization">virtualization</a></li>
+    <li class="secl-item">10. <a href="#general_architechure-dependant_options">general architechure-dependant options</a></li>
+    <li class="secl-item">11. <a href="#io_schedulers">io schedulers</a></li>
+    <li class="secl-item">12. <a href="#executable_file_formats">executable file formats</a></li>
+    <li class="secl-item">13. <a href="#memory_management_options">memory management options</a></li>
+    <li class="secl-item">14. <a href="#networking_support">networking support</a></li>
+    <li class="secl-item">15. <a href="#device_drivers">device drivers</a></li>
+    <li class="secl-item">16. <a href="#file_systems">file systems</a></li>
+    <li class="secl-item">17. <a href="#security_options">security options</a></li>
+    <li class="secl-item">18. <a href="#cryptographic_api">cryptographic api</a></li>
+    <li class="secl-item">19. <a href="#library_routines">library routines</a></li>
+    <li class="secl-item">20. <a href="#kernel_hacking">kernel hacking</a></li>
+    <li class="secl-item">21. <a href="#gentoo_linux_(if_on_gentoo">gentoo linux (if on gentoo)</a></li>
+</ul><br>
+
+<!--META DATE 10-16-21 -->
+<!--META CATEGORY software -->
+
+<h4 id="introduction">introduction [<a href="#introduction">#</a>]</h4>
+<i>tested on kernel version 5.14.21-gentoo</i><br></br>
+<p>
+    for those who are new to configuring their own linux kernel,
+    the process may seem daunting at first, but there isn't really
+    much to worry about. it's a good idea to have a recovery cd
+    just in case your kernel doesn't boot. i'll do my best to cover
+    each section of the kernel configuration menu.
+</p>
+
+<p>
+    it's a good idea to read the help section for each option,
+    which will most likely go more in depth than i will. if you have
+    a strange system (one core, weird architecture, etc), it's a good
+    idea to read the help page for options relating to your system's "quirks".
+    much newer and much older systems tend to require extra care when it comes
+    to drivers. if you have a chinese wifi card or a less common piece of
+    hardware you may have to spend more time looking for the right option.
+</p>
+
+<p>
+    to view your hardware and the corresponding loaded modules, run <code>lspci -k</code>.
+    it may be a good idea to google these options if you're noticing the corresponding
+    hardware not functioning correctly under a custom kernel. for example, my ide controller
+    was not supported until recently by the linux kernel, so i had to enable an option
+    deeper into the menus for my secondary hard drives to be detected.
+</p>
+
+<h4 id="getting_into_the_menu">getting into the menu [<a href="#getting_into_the_menu">#</a>]</h4>
+<p>
+    go into your kernel source directory (typically <code>/usr/src/linux</code>),
+    and run <code>make menuconfig</code>.
+</p>
+
+<h4 id="general_setup">general setup [<a href="#general_setup">#</a>]</h4>
+<p>
+<ul>
+    <li>compile also drivers which will not load</li>
+    <p>this is bad</p>
+    <li>local version - append to kernel release</li>
+    <p>this is good</p>
+</ul>
+
+</p>
+
+<h4 id="processor_type_and_features">processor type and features [<a href="#processor_type_and_features">#</a>]</h4>
+<p>
+    
+</p>
+
+<h4 id="power_management_and_acpi_options">power management and acpi options [<a href="#power_management_and_acpi_options">#</a>]</h4>
+<p>
+    
+</p>
+
+<h4 id="bus_options">bus options [<a href="#bus_options">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="binary_emulations">binary emulations [<a href="#binary_emulations">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="firmware_drivers">firmware drivers [<a href="#firmware_drivers">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="virtualization">virtualization [<a href="#virtualization">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="general_architechure-dependant_options">general architechure-dependant options [<a href="#general_architechure-dependant_options">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="io_schedulers">io schedulers [<a href="#io_schedulers">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="executable_file_formats">executable file formats [<a href="#executable_file_formats">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="memory_management_options">memory management options [<a href="#memory_management_options">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="networking_support">networking support [<a href="#networking_support">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="device_drivers">device drivers [<a href="#device_drivers">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="file_systems">file systems [<a href="#file_systems">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="security_options">security options [<a href="#security_options">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="cryptographic_api">cryptographic api [<a href="#cryptographic_api">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="library_routines">library routines [<a href="#library_routines">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="kernel_hacking">kernel hacking [<a href="#kernel_hacking">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="gentoo_linux_(if_on_gentoo">gentoo linux (if on gentoo) [<a href="#gentoo_linux_(if_on_gentoo">#</a>]</h4>
+<p>
+
+</p>
+
+<footer>
+    <a href="/">home</a> -
+    <a href="mailto:hasan@hasanzahra.xyz">contact</a> -
+    <a href="https://twitter.com/hasanzahra1948">twitter</a>
+</footer>
+</body>
+</html>

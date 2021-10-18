@@ -14,12 +14,13 @@
     <li class="secl-header"><h4>content</h4></li>
     <li class="secl-item">1. <a href="#the_main_obstacles">the main obstacles</a></li>
     <li class="secl-item">2. <a href="#configuring_your_system's_open_file_limit">configuring your system's open file limit</a></li>
-    <li class="secl-item">3. <a href="#no_internet_access_in_games">no internet access in games</a></li>
-    <li class="secl-item">4. <a href="#font_issues">font issues</a></li>
-    <li class="secl-item">5. <a href="#custom_proton_versions">custom proton versions</a></li>
-    <li class="secl-item">6. <a href="#optimized_kernels">optimized kernels</a></li>
-    <li class="secl-item">7. <a href="#kvm_and_passthroughs">kvm and passthroughs</a></li>
-    <li class="secl-item">8. <a href="#summary">summary</a></li>
+    <li class="secl-item">3. <a href="#kernel_options">kernel options</a></li>
+    <li class="secl-item">4. <a href="#no_internet_access_in_games">no internet access in games</a></li>
+    <li class="secl-item">5. <a href="#font_issues">font issues</a></li>
+    <li class="secl-item">6. <a href="#custom_proton_versions">custom proton versions</a></li>
+    <li class="secl-item">7. <a href="#optimized_kernels">optimized kernels</a></li>
+    <li class="secl-item">8. <a href="#kvm_and_passthroughs">kvm and passthroughs</a></li>
+    <li class="secl-item">9. <a href="#summary">summary</a></li>
 </ul><br>
 
 <!--META DATE 10-15-21 -->
@@ -46,6 +47,15 @@
     and restart your computer. only do this if you find your games
     are crashing with a message along the lines of <code>eventfd: 
     too many open files</code>.
+</p>
+
+<h4 id="kernel_options">kernel options [<a href="#kernel_options">#</a>]</h4>
+<p>
+    some games (and a lot of software) don't work without user namespaces,
+    so it's a good idea to enable them even if you're not gaming on linux.
+    the option can be found under <code>general setup - namespaces support - user namespace</code>.
+    if you're having issues with chromium (or anything based on it) this may also fix that 
+    as well.
 </p>
 
 <h4 id="no_internet_access_in_games">no internet access in games [<a href="#no_internet_access_in_games">#</a>]</h4>

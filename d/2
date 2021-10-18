@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>linux kernel configuration - hasan zahra's website</title>
+    <link rel="stylesheet" href="/u/style.css">
+</head>
+<body>
+<h2><a href="/">hasan zahra</a></h2>
+<h3>linux kernel configuration</h3>
+<br><ul class="section-list">
+    <li class="secl-header"><h4>content</h4></li>
+    <li class="secl-item">1. <a href="#introduction">introduction</a></li>
+    <li class="secl-item">2. <a href="#getting_into_the_menu">getting into the menu</a></li>
+    <li class="secl-item">3. <a href="#top_level_options">top level options</a></li>
+    <li class="secl-item">4. <a href="#general_setup">general setup</a></li>
+    <li class="secl-item">5. <a href="#processor_type_and_features">processor type and features</a></li>
+    <li class="secl-item">6. <a href="#power_management_and_acpi_options">power management and acpi options</a></li>
+    <li class="secl-item">7. <a href="#bus_options">bus options</a></li>
+    <li class="secl-item">8. <a href="#binary_emulations">binary emulations</a></li>
+    <li class="secl-item">9. <a href="#firmware_drivers">firmware drivers</a></li>
+    <li class="secl-item">10. <a href="#virtualization">virtualization</a></li>
+    <li class="secl-item">11. <a href="#general_architechure-dependant_options">general architechure-dependant options</a></li>
+    <li class="secl-item">12. <a href="#io_schedulers">io schedulers</a></li>
+    <li class="secl-item">13. <a href="#executable_file_formats">executable file formats</a></li>
+    <li class="secl-item">14. <a href="#memory_management_options">memory management options</a></li>
+    <li class="secl-item">15. <a href="#networking_support">networking support</a></li>
+    <li class="secl-item">16. <a href="#device_drivers">device drivers</a></li>
+    <li class="secl-item">17. <a href="#file_systems">file systems</a></li>
+    <li class="secl-item">18. <a href="#security_options">security options</a></li>
+    <li class="secl-item">19. <a href="#cryptographic_api">cryptographic api</a></li>
+    <li class="secl-item">20. <a href="#library_routines">library routines</a></li>
+    <li class="secl-item">21. <a href="#kernel_hacking">kernel hacking</a></li>
+    <li class="secl-item">22. <a href="#gentoo_linux_(if_on_gentoo">gentoo linux (if on gentoo)</a></li>
+</ul><br>
+
+<!--META DATE 10-16-21 -->
+<!--META CATEGORY software -->
+<i>tested on kernel version 5.14.21-gentoo</i>
+
+<h4 id="introduction">introduction [<a href="#introduction">#</a>]</h4>
+<p>
+    for those who are new to configuring their own linux kernel,
+    the process may seem daunting at first, but there isn't really
+    much to worry about. it's a good idea to have a recovery cd
+    just in case your kernel doesn't boot. i'll do my best to cover
+    each section of the kernel configuration menu.
+</p>
+
+<h4 id="getting_into_the_menu">getting into the menu [<a href="#getting_into_the_menu">#</a>]</h4>
+<p>
+    go into your kernel source directory (typically <code>/usr/src/linux</code>),
+    and run <code>make menuconfig</code>.
+</p>
+
+<h4 id="top_level_options">top level options [<a href="#top_level_options">#</a>]</h4>
+<p>
+    if using a 64 bit machine, enable a 64 bit kernel. if using kvm or
+    virtual machines, enable virtualization. it's a good idea to enable
+    loadable module support unless you know you don't need it, and the
+    same goes for networking support (unless you're not using networking).
+</p>
+
+<h4 id="general_setup">general setup [<a href="#general_setup">#</a>]</h4>
+<p>
+    some things to consider enabling here are
+    support for namespaces (<code>general setup -&gt; namespaces support -&gt; user namespace</code>)
+    which is required by a lot of software (chromium and any apps based on it are a common example).
+    this also helps with some steam games.
+
+</p>
+<p>
+    if using an initramfs, enable support (<code>general setup -&gt; initial ram filesystem and ram disk</code>).
+    if you're building a kernel for the first time and aren't sure, it's a good idea to build an initramfs. if
+    the kernel boots with it, you can try removing it and seeing if it works without it. personally i don't need
+    an initramfs.
+</p>
+<p>
+    most other things are self explanatory, and for things that aren't you can use the help button.
+    most of the help will tell you what to do if not sure about an option.
+</p>
+
+<h4 id="processor_type_and_features">processor type and features [<a href="#processor_type_and_features">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="power_management_and_acpi_options">power management and acpi options [<a href="#power_management_and_acpi_options">#</a>]</h4>
+<p>
+    
+</p>
+
+<h4 id="bus_options">bus options [<a href="#bus_options">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="binary_emulations">binary emulations [<a href="#binary_emulations">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="firmware_drivers">firmware drivers [<a href="#firmware_drivers">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="virtualization">virtualization [<a href="#virtualization">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="general_architechure-dependant_options">general architechure-dependant options [<a href="#general_architechure-dependant_options">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="io_schedulers">io schedulers [<a href="#io_schedulers">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="executable_file_formats">executable file formats [<a href="#executable_file_formats">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="memory_management_options">memory management options [<a href="#memory_management_options">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="networking_support">networking support [<a href="#networking_support">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="device_drivers">device drivers [<a href="#device_drivers">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="file_systems">file systems [<a href="#file_systems">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="security_options">security options [<a href="#security_options">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="cryptographic_api">cryptographic api [<a href="#cryptographic_api">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="library_routines">library routines [<a href="#library_routines">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="kernel_hacking">kernel hacking [<a href="#kernel_hacking">#</a>]</h4>
+<p>
+
+</p>
+
+<h4 id="gentoo_linux_(if_on_gentoo">gentoo linux (if on gentoo) [<a href="#gentoo_linux_(if_on_gentoo">#</a>]</h4>
+<p>
+
+</p>
+
+<footer>
+    <a href="/">home</a> -
+    <a href="mailto:hasan@hasanzahra.xyz">contact</a> -
+    <a href="https://twitter.com/hasanzahra1948">twitter</a>
+</footer>
+</body>
+</html>
