@@ -1,16 +1,27 @@
+:root {
+    --bg: rgba(0, 0, 0, 0.945);
+    --fg: white;
+    --link: rgb(39, 39, 206);
+    --link_v: #99a5d3;
+    --link_h: #4c7ecf;
+    --dark_grey: #3e3e3e83;
+}
+
 html {
     font: 16px/1.6em monaco, monospace;
     margin: 1em auto;
     max-width: 40em;
+    background-color: var(--bg);
+    color: var(--fg);
 }
 
 a, a:visited {
-    color:blue;
+    color: var(--link);
 }
 
 h2 a, h2 a:visited {
     text-decoration: none;
-    color: black;
+    color: var(--fg);
 
 }
 
@@ -32,7 +43,7 @@ footer {
 }
 
 pre, code {
-    background-color: #e3e3e3;
+    background-color: var(--dark_grey);
     font-family: monaco, monospace;
     font-size: 14px;
     overflow-x: auto;
@@ -59,12 +70,12 @@ pre {
 
 footer a, footer a:visited {
     text-decoration: none;
-    color:gray
+    color:var(--gray)
 }
 
 .section-list {
     display:table-cell;
-    background-color: #eee;
+    background-color: var(--dark_grey); 
     padding-right: 10px;
 }
 

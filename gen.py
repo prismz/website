@@ -2,6 +2,7 @@ import os
 import time
 import sys
 import string
+import codecs
 
 # all characters besides lowercase characters
 NLOWER = [i for i in string.printable if i not in string.ascii_lowercase]
@@ -26,22 +27,23 @@ HTML_BOILER_BODY = """<body>
 
 def read_file(name):
     try:
-        x = open(name, 'r')
+        x = codecs.open(name, 'r', encoding='utf8')
         c = x.read()
         x.close()
         return c
     except:
+        print(f'cant read {name}')
         return None
 
 def parse_article(filepath):
     c = read_file(filepath)
     if c is None:
-        return None
+        print('failed read')
+        return
 
     metadata = {}
     have_content = False
     metadata['raw_body'] = ''
-    metadata['sections'] = []
     metadata['content_list'] = '<br><ul class="section-list">\n    <li class="secl-header"><h4>content</h4></li>\n'
     metadata['content_added'] = 0
     for line in c.splitlines():
@@ -63,8 +65,8 @@ def parse_article(filepath):
             have_content = True
             continue
 
-        if line.strip().startswith('<h'):
-            title = line.split('>', 1)[-1].split('</h')[0]
+        if line.strip().startswith('<h3'):
+            title = line.split('>', 1)[-1].split('</h3')[0]
             metadata['title'] = title
             continue
 
@@ -85,7 +87,7 @@ def parse_article(filepath):
     return metadata
 
 def format_article(metadata, header, footer):
-    if metadata == {}:
+    if metadata == {} or metadata is None:
         print('no metadata passed to format_article')
         return
 
@@ -106,8 +108,12 @@ def main():
         header = read_file('u/header.html')
         footer = read_file('u/footer.html')
         for a in os.listdir('c'):
-            c = format_article(parse_article(f'{srcdir}/{a}'), header, footer)
-            f = open(f'{dstdir}/{a}', 'w+')
+            p = parse_article(f'{srcdir}/{a}')
+            if p is None:
+                print('p is none')
+                return
+            c = format_article(p, header, footer)
+            f = codecs.open(f'{dstdir}/{a}', 'w+', encoding='utf8')
             f.write(c)
             f.close()
 
