@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>
+#include <ctype.h>
 
 #include "config.h"
 
@@ -14,33 +15,30 @@
                 "|}~ \t\n\r\x0b\x0c"
 
 struct metadata {
-    char** sections;
+    char* title;
     char* raw_body;
     char* content_list;
-    size_t nsections;
     size_t content_added;
+    int parsed;
 };
 
 void
 init_metadata(struct metadata* m)
 {
-    m->sections = malloc(sizeof(char*) * 1);
     m->raw_body = malloc(sizeof(char) * 1);
     m->content_list = strdup(content_list_header);
+    m->title = NULL;
     m->content_added = 0;
-    m->nsections = 0;
+    m->parsed = 0;
 }
 
 void
 free_metadata(struct metadata* m)
 {
-    for (size_t i = 0; i < m->nsections; i++)
-        free(m->sections[i]);
-    free(m->sections);
+    free(m->title);
     free(m->raw_body);
     free(m->content_list);
     m->content_added = 0;
-    m->nsections = 0;
 }
 
 char*
@@ -52,19 +50,20 @@ read_file(char* path)
 
     size_t added = 0;
     size_t allocated = 1024;
-    char* buff = calloc(1, sizeof(char) * allocated);
+    char* buff = malloc(sizeof(char) * allocated);
     char* linebuffer = malloc(sizeof(char) * 1024);
     while (fgets(linebuffer, 1024, fp) != NULL) {
-        if (added + sizeof(buff) > allocated - 5)
-            buff = realloc(buff, sizeof(char) * (allocated *= 2));
+        if (added + strlen(linebuffer) > allocated - 10) {
+            allocated += 1024;
+            buff = realloc(buff, sizeof(char) * allocated);
+        }
 
-        added += sizeof(buff);
+        added += strlen(linebuffer);
         strcat(buff, linebuffer);
     }
 
     fclose(fp);
     free(linebuffer);
-    
     return buff;
 }
 
@@ -86,16 +85,6 @@ strstw(char* haystack, char* needle)
 }
 
 /*
- * check if a string starts with another string,
- * ignore leading and trailing whitespace
- */
-int
-strstw_w(char* haystack, char* needle)
-{
-
-}
-
-/*
  * yank the body of an html tag
  * ex:
  * yank_tag("<h4>title</h4>") -> "title"
@@ -103,9 +92,24 @@ strstw_w(char* haystack, char* needle)
 char*
 yank_tag(char* str)
 {
+    int bi = 0;
     char* body = malloc(sizeof(char) * (strlen(str) + 1));
     if (body == NULL)
         return NULL;
+
+    int beg = 0;
+    for (size_t i = 0; i < strlen(str); i++) {
+        if (str[i] == '>')
+            beg = 1;
+        else if (beg) {
+            if (str[i] == '<')
+                break;
+            body[bi++] = str[i];
+        }
+    }
+    body[bi] = '\0';
+
+    return body;
 }
 
 int
@@ -114,7 +118,7 @@ char_in_str(char* str, char c)
     for (size_t i = 0; i < strlen(str); i++)
         if (str[i] == c)
             return 1;
-    
+
     return 0;
 }
 
@@ -129,7 +133,7 @@ xsnprintf(size_t n, char* fmt, ...)
 
     vsnprintf(str, n, fmt, vl);;
     va_end(vl);
-    
+
     return str;
 }
 
@@ -138,6 +142,7 @@ str_to_id(char* str)
 {
     char* nstr = strdup(str);
     char* istr = strdup(str);
+
     if (nstr == NULL)
         return NULL;
 
@@ -146,52 +151,96 @@ str_to_id(char* str)
         char c = str[i];
 
         /* convert to lowercase */
-        if (c >= 'A' && c <= 'Z')
+        if (c >= 'A' && c <= 'Z') {
             c -= ('A' - 'a');
-        
-        if (!char_in_str(NLOWER, c) || c == ' ')
+        }
+
+        if (!char_in_str(NLOWER, c) || c == ' ') {
             if (c == ' ' && str[i - 1] != ' ')  /* no extra spaces */
                 istr[j++] = '_';
             else if (c != ' ')
                 istr[j++] = c;
+        }
     }
 
     /* remove trailing spaces */
-    for (k = j-1; k >= 0; k--)
+    for (k = j - 1; (long long)k >= 0; k--)
         if (istr[k] == '_')
             j--;
         else
             break;
 
-    istr = realloc(istr, sizeof(char) * (j+1));  /* resize */
+    istr = realloc(istr, sizeof(char) * (j + 1));  /* resize */
     istr[j] = '\0';
     free(nstr);
     return istr;
 }
 
-int
+struct metadata
 parse_article(char* path)
 {
-    char* c = read_file(path);
-    if (c == NULL)
-        return 1;
-
     struct metadata m;
     init_metadata(&m);
+    char* c = read_file(path);
+    if (c == NULL) {
+        printf("parse_article failed: %s\n", path);
+        return m;
+    }
+    size_t raw_size = strlen(c) * 2;
+
+
+    int have_content = 0;
+    m.raw_body = realloc(m.raw_body, raw_size);
 
     for (char* ptr = strtok(c, "\n"); ptr != NULL; ptr = strtok(NULL, "\n")) {
-        if (strstw_w(ptr, SECTION_HEADER)) {
+        if (strstw(ptr, TITLE_HEADER)) {
+            char* title = yank_tag(ptr);
+            m.title = title;
+        } else if (strstw(ptr, SECTION_HEADER)) {
             char* title = yank_tag(ptr);
             char* id = str_to_id(title);
+            size_t fmt_size = strlen(id) + strlen(title) + 512;
+
+            char* fmt_title = xsnprintf(fmt_size,
+                "<h4 id=\"%s\">{title} [<a href=\"#%s\">#</a>]</h4>\n",
+                title, id);
+
+            char* fmt_id_item = xsnprintf(fmt_size,
+                "    <li class=\"secl-item\">%zu. <a href=\"#%s\">%s</a></li>\n",
+                m.content_added + 1, id, title);
+
+            m.content_list = realloc(m.content_list, strlen(m.content_list) + 1024);
+            m.content_added++;
+
+            strcat(m.raw_body, fmt_title);
+            strcat(m.content_list, fmt_id_item);
+
+            free(fmt_title);
+            free(fmt_id_item);
+            free(title);
+            free(id);
+
+            have_content = 1;
         }
     }
+    strcat(m.content_list, "</ul><br>\n\n");
 
-    free_metadata(&m);
-    return 0;
+    char* nbody = xsnprintf(
+        strlen(m.title) + strlen(m.content_list) + strlen(m.raw_body) + 1024,
+        "<h3>%s</h3>\n%s\n%s",
+        m.title, (have_content) ? m.content_list : "\n", m.raw_body);
+    free(m.raw_body);
+    free(c);
+    m.raw_body = nbody;
+    m.parsed = 1;
+    return m;
 }
 
 int
 main()
 {
-    str_to_id("ABCdef()       a             234__\\%%");
+    struct metadata m = parse_article("../c/software/cstyles.html");
+    if (!m.parsed)
+        printf("err\n");
+    free_metadata(&m);
 }
