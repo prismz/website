@@ -123,7 +123,7 @@ char_in_str(char* str, char c)
 }
 
 char*
-xsnprintf(size_t n, char* fmt, ...)
+xsnprintf(size_t n, const char* fmt, ...)
 {
     va_list vl;
     va_start(vl, fmt);
@@ -173,9 +173,15 @@ str_to_id(char* str)
     istr = realloc(istr, sizeof(char) * (j + 1));  /* resize */
     istr[j] = '\0';
     free(nstr);
+
     return istr;
 }
 
+/*
+ * TODO:
+ * fix bug where regular lines aren't added
+ * to the final buffer correctly
+ */
 struct metadata
 parse_article(char* path)
 {
@@ -188,46 +194,46 @@ parse_article(char* path)
     }
     size_t raw_size = strlen(c) * 2;
     int have_content = 0;
-    m.raw_body = realloc(m.raw_body, raw_size);
+    free(m.raw_body);
+    m.raw_body = calloc(1, raw_size);
 
     for (char* ptr = strtok(c, "\n"); ptr != NULL; ptr = strtok(NULL, "\n")) {
         if (strstw(ptr, TITLE_HEADER)) {
             char* title = yank_tag(ptr);
             m.title = title;
-            printf("p title\n");
+            continue;
         } else if (strstw(ptr, SECTION_HEADER)) {
             char* title = yank_tag(ptr);
             char* id = str_to_id(title);
             size_t fmt_size = strlen(id) + (strlen(title) * 2) + 512;
 
             char* fmt_title = xsnprintf(fmt_size,
-                "<h4 id=\"%s\">%s [<a href=\"#%s\">#</a>]</h4>\n",
-                title, title, id);
+                "<h4 id=\"%s\">%s [<a href=\"#%s\"></a>]</h4>\n",
+                id, title, id);
 
             char* fmt_id_item = xsnprintf(fmt_size,
                 "    <li class=\"secl-item\">%zu. <a href=\"#%s\">%s</a></li>\n",
                 m.content_added + 1, id, title);
 
-            m.content_list = realloc(m.content_list, strlen(m.content_list) + strlen(fmt_id_item));
+            m.content_list = realloc(m.content_list, strlen(m.content_list) + strlen(fmt_id_item) + 256);
             m.content_added++;
 
             strcat(m.raw_body, fmt_title);
             strcat(m.content_list, fmt_id_item);
-
             free(fmt_title);
             free(fmt_id_item);
             free(title);
             free(id);
 
             have_content = 1;
+            continue;
         } else {
-            m.raw_body = realloc(m.raw_body, strlen(m.raw_body) + strlen(ptr) + 1);
-            printf("%s\n", ptr);
             strcat(m.raw_body, ptr);
+            // strcat(m.raw_body, "\n");
+            continue;
         }
     }
     strcat(m.content_list, "</ul><br>\n\n");
-    // printf("%s\n", m.raw_body);
 
     char* nbody = xsnprintf(
         strlen(m.title) + strlen(m.content_list) + strlen(m.raw_body) + 1024,
@@ -237,7 +243,6 @@ parse_article(char* path)
     free(c);
     m.raw_body = nbody;
     m.parsed = 1;
-
 
     return m;
 }
@@ -279,32 +284,35 @@ format_article(struct metadata* m, char* header, char* footer, char* stylepath)
     free(hbf);
     free(bb);
     free(rhbb);
+
     return full;
 }
 
-int
-generate(char* srcdir, char* dstdir)
-{
+// int
+// generate(char* srcdir, char* dstdir)
+// {
 
-}
+// }
 
 int
 main()
 {
     struct metadata m = parse_article("../c/software/cstyles.html");
-    printf("%s\n", m.raw_body);
+    // printf("%s\n", m.raw_body);
 
     if (!m.parsed)
         printf("err\n");
     char* header = read_file("../u/header.html");
-    char* footer = read_file("../u/footer.html");
+    // char* footer = read_file("../u/footer.html");
+    char* footer = strdup("FOOTER\nFOOT2");
+    printf("%s", footer);
     if (header == NULL || footer == NULL) {
         printf("err head/foot\n");
         return 1;
     }
 
     char* full = format_article(&m, header, footer, "/u/style.css");
-    // printf("\nDONE\n%s\n", full);
+    // printf("%s\n", full);
 
     free(header);
     free(footer);
