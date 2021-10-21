@@ -48,23 +48,25 @@ read_file(char* path)
     if (!fp)
         return NULL;
 
-    size_t added = 0;
-    size_t allocated = 2048;
-    char* buff = calloc(1, sizeof(char) * allocated);
-    char* linebuffer = calloc(1, sizeof(char) * 2048);
-    while (fgets(linebuffer, 2048, fp) != NULL) {
-        added += strlen(linebuffer);
-        if (added > allocated - 1) {
-            allocated += 2048;
-            buff = realloc(buff, sizeof(char) * allocated);
-        }
+    size_t allocated = 1024, i = 0;
+    char* buffer = malloc(sizeof(char) * allocated);
+    char c, lc;
+    while ((c = fgetc(fp)) != EOF) {
+        if (i + 1 > allocated)
+            buffer = realloc(buffer, allocated += 512);
+        
+        if (i == 0)
+            lc = 0;
+        else
+            lc = buffer[i - 1];
 
-        strcat(buff, linebuffer);
+        buffer[i++] = c;
     }
-
+    buffer[i] = '\0';
+   
     fclose(fp);
-    free(linebuffer);
-    return buff;
+
+    return buffer;
 }
 
 /* check if a string starts with another string */
@@ -295,7 +297,7 @@ format_article(struct metadata* m, char* header, char* footer, char* stylepath)
 // }
 
 int
-main()
+main(void)
 {
     struct metadata m = parse_article("../c/software/cstyles.html");
     // printf("%s\n", m.raw_body);
@@ -303,17 +305,24 @@ main()
     if (!m.parsed)
         printf("err\n");
     char* header = read_file("../u/header.html");
-    // char* footer = read_file("../u/footer.html");
-    char* footer = strdup("FOOTER\nFOOT2");
-    printf("%s", footer);
+    char* footer = read_file("../u/footer.html");
     if (header == NULL || footer == NULL) {
         printf("err head/foot\n");
         return 1;
     }
 
     char* full = format_article(&m, header, footer, "/u/style.css");
+    
+    for (size_t i = 0; i < strlen(footer); i++) {
+        printf("%d '%c'", footer[i], footer[i]);
+        if (footer[i] == '\n')
+            printf(" N");
+        else if (footer[i] == '\r')
+            printf(" R");
+        
+        printf("\n");
+    }
     // printf("%s\n", full);
-
     free(header);
     free(footer);
     free(full);
