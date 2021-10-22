@@ -3,6 +3,9 @@
 #include <string.h>
 #include <stdarg.h>
 #include <ctype.h>
+#include <dirent.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 #include "config.h"
 
@@ -13,11 +16,13 @@
                 "()*+,-./:;<'"           \
                 "=>?@[\\]^_`{"           \
                 "|}~ \t\n\r\x0b\x0c"
+#define ISNULL(x) (x == NULL) ? 1 : 0
 
 struct metadata {
     char* title;
     char* raw_body;
     char* content_list;
+    char* category;
     size_t content_added;
     int parsed;
 };
@@ -28,6 +33,7 @@ init_metadata(struct metadata* m)
     m->raw_body = malloc(sizeof(char) * 1);
     m->content_list = strdup(content_list_header);
     m->title = NULL;
+    m->category = NULL;
     m->content_added = 0;
     m->parsed = 0;
 }
@@ -35,10 +41,12 @@ init_metadata(struct metadata* m)
 void
 free_metadata(struct metadata* m)
 {
+    free(m->category);
     free(m->title);
     free(m->raw_body);
     free(m->content_list);
     m->content_added = 0;
+    m->parsed = 0;
 }
 
 char*
@@ -50,23 +58,31 @@ read_file(char* path)
 
     size_t allocated = 1024, i = 0;
     char* buffer = malloc(sizeof(char) * allocated);
-    char c, lc;
+    char c;
     while ((c = fgetc(fp)) != EOF) {
         if (i + 1 > allocated)
             buffer = realloc(buffer, allocated += 512);
         
-        if (i == 0)
-            lc = 0;
-        else
-            lc = buffer[i - 1];
-
         buffer[i++] = c;
     }
+
     buffer[i] = '\0';
    
     fclose(fp);
 
     return buffer;
+}
+
+int
+write_file(char* filename, char* content)
+{
+    FILE* fp = fopen(filename, "wb+");
+    if (!fp)
+        return 1;
+
+    fprintf(fp, "%s", content);
+    fclose(fp);
+    return 0;
 }
 
 /* check if a string starts with another string */
@@ -179,14 +195,10 @@ str_to_id(char* str)
     return istr;
 }
 
-/*
- * TODO:
- * fix bug where regular lines aren't added
- * to the final buffer correctly
- */
 struct metadata
 parse_article(char* path)
 {
+    printf("beginning to parse article %s.\n", path);
     struct metadata m;
     init_metadata(&m);
     char* c = read_file(path);
@@ -203,6 +215,7 @@ parse_article(char* path)
         if (strstw(ptr, TITLE_HEADER)) {
             char* title = yank_tag(ptr);
             m.title = title;
+            printf("title: %s\n", title);
             continue;
         } else if (strstw(ptr, SECTION_HEADER)) {
             char* title = yank_tag(ptr);
@@ -220,6 +233,7 @@ parse_article(char* path)
             m.content_list = realloc(m.content_list, strlen(m.content_list) + strlen(fmt_id_item) + 256);
             m.content_added++;
 
+            printf("section: %s\n", title);
             strcat(m.raw_body, fmt_title);
             strcat(m.content_list, fmt_id_item);
             free(fmt_title);
@@ -231,20 +245,29 @@ parse_article(char* path)
             continue;
         } else {
             strcat(m.raw_body, ptr);
-            // strcat(m.raw_body, "\n");
-            continue;
         }
     }
     strcat(m.content_list, "</ul><br>\n\n");
+    printf("finished building...\n");
+    printf("%d %d %d %d\n", ISNULL(m.content_list), ISNULL(m.raw_body), ISNULL(m.title), have_content);
+    size_t size = strlen(m.title) + (have_content ? strlen(m.content_list) : 10) + strlen(m.raw_body) + 256;
+    printf("got size %d...\n", (int)size);
 
-    char* nbody = xsnprintf(
-        strlen(m.title) + strlen(m.content_list) + strlen(m.raw_body) + 1024,
-        "<h3>%s</h3>\n%s\n%s",
-        m.title, (have_content) ? m.content_list : "\nNULL\n", m.raw_body);
-    free(m.raw_body);
-    free(c);
-    m.raw_body = nbody;
+    printf("beginning...\n");
+
+    printf("print...\n");
+    // char* nbody = xsnprintf(
+    //     size,
+    //     "<h3>%s</h3>\n%s\n%s",
+    //     m.title, ((have_content) ? m.content_list : "\n"), m.raw_body);
+
+    printf("copy...\n");
+    // free(m.raw_body);
+    // free(c);
+
+    // m.raw_body = nbody;
     m.parsed = 1;
+    printf("set...\n");
 
     return m;
 }
@@ -280,7 +303,6 @@ format_article(struct metadata* m, char* header, char* footer, char* stylepath)
     char* full = xsnprintf(strlen(rhh) + strlen(bb) + 256,
         html_boiler_head, rhbb);
     
-
     free(ftitle);
     free(rhh);
     free(hbf);
@@ -289,6 +311,45 @@ format_article(struct metadata* m, char* header, char* footer, char* stylepath)
 
     return full;
 }
+
+int
+parse_article_dir(char* srcdir, char* dstdir)
+{
+    DIR* dir = opendir(srcdir);
+    DIR* subdir;
+    if (!dir)
+        return 1;
+
+    struct dirent* ent, *subent;
+    while ((ent = readdir(dir)) != NULL) {
+        char* dname = ent->d_name;
+        if (!strcmp(dname, ".") || !strcmp(dname, ".."))
+            continue;
+        // printf("%s\n", ent->d_name);
+        char* dpath = xsnprintf(PATH_MAX, "%s/%s", srcdir, ent->d_name);
+        subdir = opendir(dpath);
+        if (!subdir)
+            continue;
+        while ((subent = readdir(subdir)) != NULL) {
+            char* sdname = subent->d_name;
+            if (!strcmp(sdname, ".") || !strcmp(sdname, ".."))
+                continue;
+            
+            char* article_path = xsnprintf(PATH_MAX, "%s/%s", dpath, sdname);
+            printf("%s\n", article_path);
+            struct metadata m = parse_article(article_path);
+            printf("made...\n");
+            free(article_path);
+            free_metadata(&m);
+            printf("free...\n");
+        }
+        free(dpath);
+    }
+
+    printf("complete...\n");
+    return 0;
+}
+
 
 // int
 // generate(char* srcdir, char* dstdir)
@@ -299,11 +360,6 @@ format_article(struct metadata* m, char* header, char* footer, char* stylepath)
 int
 main(void)
 {
-    struct metadata m = parse_article("../c/software/cstyles.html");
-    // printf("%s\n", m.raw_body);
-
-    if (!m.parsed)
-        printf("err\n");
     char* header = read_file("../u/header.html");
     char* footer = read_file("../u/footer.html");
     if (header == NULL || footer == NULL) {
@@ -311,20 +367,7 @@ main(void)
         return 1;
     }
 
-    char* full = format_article(&m, header, footer, "/u/style.css");
-    
-    for (size_t i = 0; i < strlen(footer); i++) {
-        printf("%d '%c'", footer[i], footer[i]);
-        if (footer[i] == '\n')
-            printf(" N");
-        else if (footer[i] == '\r')
-            printf(" R");
-        
-        printf("\n");
-    }
-    // printf("%s\n", full);
+    parse_article_dir("../c", "../d");
     free(header);
     free(footer);
-    free(full);
-    free_metadata(&m);
 }
