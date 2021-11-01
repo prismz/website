@@ -2,6 +2,8 @@ import os
 import time
 import sys
 import string
+import codecs
+
 
 # all characters besides lowercase characters
 NLOWER = [i for i in string.printable if i not in string.ascii_lowercase]
@@ -26,11 +28,12 @@ HTML_BOILER_BODY = """<body>
 
 def read_file(name):
     try:
-        x = open(name, 'r')
+        x = open(name, 'r', encoding='utf8')
         c = x.read()
         x.close()
         return c
-    except:
+    except Exception as e:
+        print(f'read: error {e}')
         return None
 
 def parse_article(filepath):
@@ -105,9 +108,9 @@ def main():
         st = time.time()
         header = read_file('u/header.html')
         footer = read_file('u/footer.html')
-        for a in os.listdir('c'):
+        for a in os.listdir(srcdir):
             c = format_article(parse_article(f'{srcdir}/{a}'), header, footer)
-            f = open(f'{dstdir}/{a}', 'w+')
+            f = open(f'{dstdir}/{a}', 'w+', encoding='utf8')
             f.write(c)
             f.close()
 
@@ -127,5 +130,3 @@ if __name__ == '__main__':
     else:
         print('pass arg "debug" to constantly regenerate - (for debugging)')
         main()
-
-
