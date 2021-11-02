@@ -79,9 +79,8 @@
 
 <p>
     <i>
-        a little trick: compiling the linux kernel does not use much ram, so you can compile with crazy 
-        high -j options. i only have 6 threads on my cpu, and i can get away with cutting my build time 
-        from 13 minutes to 7 minutes using <code>-j64</code>. do this at your own risk.
+        note: make sure to use <code>-j(number of cpu cores)</code> when 
+        compiling the kernel to reduce build times.
     </i>
 </p>
 <h4>cleaning the system</h4>
