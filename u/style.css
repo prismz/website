@@ -91,3 +91,7 @@ footer a, footer a:visited {
     padding-left: 7px;
     width: 10px;
 }
+
+.strikethrough {
+    text-decoration: line-through;
+}
