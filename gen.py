@@ -108,11 +108,53 @@ def main():
         st = time.time()
         header = read_file('u/header.html')
         footer = read_file('u/footer.html')
+        index_template = read_file('indextemplate.html')
+        index_text = ''
+        sections = {}
         for a in os.listdir(srcdir):
-            c = format_article(parse_article(f'{srcdir}/{a}'), header, footer)
+            parsed = parse_article(f'{srcdir}/{a}')
+            c = format_article(parsed, header, footer)
             f = open(f'{dstdir}/{a}', 'w+', encoding='utf8')
             f.write(c)
             f.close()
+
+            category = parsed['category']
+            title = parsed['title']
+            date = parsed['date']
+            ctnt = f'<li title="{date}"><a href="{dstdir}/{a}">{title}</a></li>\n'
+            try:
+                sections[category] += ctnt
+            except:
+                sections[category] = ctnt
+
+        for i in sections.keys():
+            sections[i] = f'<h3>{i.replace("_", " ")}</h3>\n<ul>\n' + sections[i] + '\n</ul>'
+
+        order = []
+        added = []
+        print('sections will be placed in the following order:')
+        for index, i in enumerate(sections.keys()):
+            print(f'{index + 1}. {i}')
+            order.append(index)
+
+        x = input('is this okay? [Y/numbers followed by spaces] ')
+        if x.strip() == '' or x.lower().strip() == 'y':
+            pass
+        else:
+            order = [int(i) - 1 for i in x.split(' ')]
+            print(f'custom order: {order}')
+
+        while len(added) != len(order):
+            for i in order:
+                for si, s in enumerate(sections.keys()):
+                    if i == si:
+                        added.append(si)
+                        index_text += sections[s]
+        
+        index_text = index_template.replace('_ARTICLELIST_', index_text)
+        f = open('index.html', 'w+', encoding='utf8')
+        f.write(index_text)
+        f.close()
 
         et = time.time() - st
         print(f'completed in {round(et, 5)}')
@@ -128,5 +170,5 @@ if __name__ == '__main__':
             except Exception as e:
                 print(f'err in __name == \'__main__\': {e}')
     else:
-        print('pass arg "debug" to constantly regenerate - (for debugging)')
+        print('pass arg "debug" to constantly regenerate - (for debugging only)')
         main()
