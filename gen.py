@@ -101,7 +101,9 @@ def format_article(metadata, header, footer):
 
     return full
 
-def main():
+global order
+order = []
+def main(debug=False):
     srcdir = 'c'
     dstdir = 'd'
     try:
@@ -130,19 +132,21 @@ def main():
         for i in sections.keys():
             sections[i] = f'<h3>{i.replace("_", " ")}</h3>\n<ul>\n' + sections[i] + '\n</ul>'
 
-        order = []
         added = []
-        print('sections will be placed in the following order:')
-        for index, i in enumerate(sections.keys()):
-            print(f'{index + 1}. {i}')
-            order.append(index)
+        global order
+        if order == []:
+            print('sections will be placed in the following order:')
+            for index, i in enumerate(sections.keys()):
+                print(f'{index + 1}. {i}')
+                order.append(index)
 
-        x = input('is this okay? [Y/numbers followed by spaces] ')
-        if x.strip() == '' or x.lower().strip() == 'y':
-            pass
-        else:
-            order = [int(i) - 1 for i in x.split(' ')]
-            print(f'custom order: {order}')
+            x = input('is this okay? [Y/numbers followed by spaces] ')
+            if x.strip() == '' or x.lower().strip() == 'y':
+                pass
+            else:
+                order = []
+                order += [int(i) - 1 for i in x.strip().split(' ')]
+                print(f'custom order: {order}')
 
         while len(added) != len(order):
             for i in order:
@@ -165,7 +169,7 @@ if __name__ == '__main__':
     if len(sys.argv) >= 2 and sys.argv[1] == 'debug':
         while 1:
             try:
-                main()
+                main(debug=True)
                 time.sleep(2)
             except Exception as e:
                 print(f'err in __name == \'__main__\': {e}')
