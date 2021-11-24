@@ -1,10 +1,12 @@
 :root {
-    --bg: rgba(0, 0, 0, 0.945);
-    --fg: white;
+    /* --bg: rgba(0, 0, 0, 0.945);  /* enable for dark mode */ */
+    --bg: #fefefe;
+    --fg: #444;
     --link: rgb(39, 39, 206);
     --link_v: #99a5d3;
     --link_h: #4c7ecf;
-    --dark_grey: #3e3e3e83;
+    --alt_bg: #eee;
+    /* --alt_bg: #3e3e3e83;  /* enable for dark mode */ */
 }
 
 html {
@@ -43,7 +45,7 @@ footer {
 }
 
 pre, code {
-    background-color: var(--dark_grey);
+    background-color: var(--alt_bg);
     font-family: monaco, monospace;
     font-size: 14px;
     overflow-x: auto;
@@ -75,7 +77,7 @@ footer a, footer a:visited {
 
 .section-list {
     display:table-cell;
-    background-color: var(--dark_grey); 
+    background-color: var(--alt_bg); 
     padding-right: 10px;
 }
 
