@@ -57,7 +57,7 @@ def parse_article(filepath):
 
             # create href id and add it to the content list
             r_id = r_id.replace(' ', '_').strip()
-            n = f'<h4 id="{r_id}">{title} [<a href="#{r_id}">#</a>]</h4>'
+            n = f'<h4 id="{r_id}">{title}</h4>'
             metadata['raw_body'] += n + '\n'
 
             # append to numbered list of sections
