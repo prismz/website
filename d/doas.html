@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>doas - the better alternative to sudo - hasan zahra's website</title>
+    <link rel="stylesheet" href="/u/style.css">
+</head>
+<body>
+<h2><a href="/">Hasan Zahra</a></h2>
+<h3>doas - the better alternative to sudo</h3>
+<br><ul class="section-list">
+    <li class="secl-header"><h4>content</h4></li>
+    <li class="secl-item">1. <a href="#origin">origin</a></li>
+    <li class="secl-item">2. <a href="#installation">installation</a></li>
+    <li class="secl-item">3. <a href="#configuration">configuration</a></li>
+    <li class="secl-item">4. <a href="#why">why</a></li>
+</ul><br>
+
+<!--META DATE 10-27-21 -->
+<!--META CATEGORY software -->
+
+
+<h4 id="origin">origin</h4>
+<p>
+    doas comes from bsd, and has been
+    ported to linux in recent years.
+</p>
+
+<h4 id="installation">installation</h4>
+<p>
+    doas comes in the repos for most linux
+    distros, and in the aur for arch users.
+    note that you will need to configure
+    it after installation.
+</p>
+
+<h4 id="configuration">configuration</h4>
+<p>
+    the config file for doas
+    is located at <code>/etc/doas.conf</code>.
+    the file is structured as follows:
+
+<pre>
+# comments using hashes
+# man doas.conf(5)
+permit/deny options user as target cmd allowed_command args allowed_args
+
+# options:
+# nopass means that doas will not ask for a password.
+# nolog means doas will not write using sysklogd.
+# persist means don't require password after it is entered once.
+# keepenv means keep environment variables
+# setenv means set variables
+
+# if cmd and args are blank all commands are allowed
+# if args is blank but not cmd, no args can be passed
+</pre>
+</p>
+
+<h4 id="why">why</h4>
+<p>
+    sudo is bloated with many complicated
+    options and separate commands and config files.
+    doas is incredibly simple to configure and set up,
+    and i find it easier and better to use than sudo.
+<br>
+<br>
+    on most distros you'll have to keep sudo as a dependency,
+    but if you can get away with removing it (easily done on gentoo),
+    you can have a system free of sudo.
+</p>
+
+
+<footer>
+    <a href="/">home</a> -
+    <a href="mailto:hasan@hasanzahra.xyz">contact</a> -
+    <a href="https://github.com/prismz">github</a> -
+    <a href="https://twitter.com/hasanzahra1948">twitter</a>
+</footer>
+</body>
+</html>
