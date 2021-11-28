@@ -4,7 +4,6 @@ import sys
 import string
 import codecs
 
-
 # all characters besides lowercase characters
 NLOWER = [i for i in string.printable if i not in string.ascii_lowercase]
 
