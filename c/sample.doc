@@ -1,0 +1,30 @@
+; hasanzahra.xyz - custom markdown language
+! date=date
+! category=category
+! title=title
+
+; comment
+; # at line start means raw line
+
+- section title
+content line 1
+content line 2
+|              ; break
+content line 3
+content line 4
+
+# ; this line starts with a semicolon
+
+; insert link 1 with title "reference"
+[1=reference]
+
+``inline code``
+
+----
+code block
+----
+
+; link table, 1 a line
+[
+https://google.com
+]
