@@ -1,3 +1,8 @@
+; colemak 
+noremap n j
+noremap e k
+noremap i l
+
 set nu
 set nowrap
 set shiftwidth=4

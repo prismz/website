@@ -6,9 +6,9 @@ c = content (unformatted)
 d = destination content (formatted using gen.py)
 m = server hosted files
 u = misc things
+library = hosted books and pdfs
 
-gen = c code to generate the website,
-configured using config.h and source code.
+gen.py = python script to generate site
+gen = (incomplete) c code to generate the website - configured using config.h and source code.
 
-the content directory contains subfolders 
-for each type of article.
+each article contains metadata of the creation date and category.

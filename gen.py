@@ -105,6 +105,11 @@ order = []
 def main(debug=False):
     srcdir = 'c'
     dstdir = 'd'
+
+    # removing old articles
+    for i in os.listdir(dstdir):
+        os.remove(f'{dstdir}/{i}')
+
     try:
         st = time.time()
         header = read_file('u/header.html')
