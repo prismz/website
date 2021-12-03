@@ -11,4 +11,4 @@ library = hosted books and pdfs
 gen.py = python script to generate site
 gen = (incomplete) c code to generate the website - configured using config.h and source code.
 
-each article contains metadata of the creation date and category.
+website is currently being overhauled
