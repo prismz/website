@@ -31,7 +31,7 @@ a lot. most of which seems obvious to me, but
 
 > "something that is obvious to you is not always obvious to other people,
 > and something that is boring to you might be fascinating to someone from a
-> different culture or who is new to the topic." [1](https://rgz.ee/website.html)
+> different culture or who is new to the topic" [[1]](https://rgz.ee/website.html).
 
 if my writing or code helps someone else, then i've done my job. i'm not a great 
 writer, but i'll still try to write regularly, whether it be about linux or something else.
