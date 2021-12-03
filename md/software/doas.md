@@ -3,27 +3,27 @@
 
 <h3>doas - the better alternative to sudo</h3>
 
-<h4>origin</h4>
-<p>
+## origin
+
     doas comes from bsd, and has been
     ported to linux in recent years.
-</p>
 
-<h4>installation</h4>
-<p>
+
+## installation
+
     doas comes in the repos for most linux
     distros, and in the aur for arch users.
     note that you will need to configure
     it after installation.
-</p>
 
-<h4>configuration</h4>
-<p>
+
+## configuration
+
     the config file for doas
-    is located at <code>/etc/doas.conf</code>.
+    is located at /etc/doas.conf.
     the file is structured as follows:
 
-<pre>
+
 # comments using hashes
 # man doas.conf(5)
 permit/deny options user as target cmd allowed_command args allowed_args
@@ -37,11 +37,11 @@ permit/deny options user as target cmd allowed_command args allowed_args
 
 # if cmd and args are blank all commands are allowed
 # if args is blank but not cmd, no args can be passed
-</pre>
-</p>
 
-<h4>why</h4>
-<p>
+
+
+## why
+
     sudo is bloated with many complicated
     options and separate commands and config files.
     doas is incredibly simple to configure and set up,
@@ -51,5 +51,5 @@ permit/deny options user as target cmd allowed_command args allowed_args
     on most distros you'll have to keep sudo as a dependency,
     but if you can get away with removing it (easily done on gentoo),
     you can have a system free of sudo.
-</p>
+
 

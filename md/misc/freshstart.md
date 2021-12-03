@@ -3,7 +3,7 @@
 
 <h3>a fresh start</h3>
 
-<p>
+
     a new beginning! i decided my old site's design was too
     convoluted and i didn't like how it looked. i'm going
     to try to keep the website almost entirely plain-text for
@@ -12,9 +12,9 @@
     when i ask a question and get a link to a blog with hundreds
     of popups or when i'm looking at a page and my adblock's statistics
     show hundreds of blocked ads and trackers. why?
-</p>
 
-<p>
+
+
     now that i have an actual server with my <a href="mailto:hasan@hasanzahra.xyz">email</a> domain set up,
     there's no reason to run a website with a messy layout or tons of javascript.
     a simple <a href="/d/staticsitegen.html">python script</a>
@@ -24,9 +24,9 @@
     complicates things and just adds weight. it also discourages people
     who have javascript disabled for security reasons. while these people may be called "nerds",
     they're my target audience.
-</p>
 
-<p>
+
+
     i didn't have many articles on my website before since i
     didn't write much. after switching to gentoo, i have plenty
     to write about. maybe one day when school doesn't take up all
@@ -44,4 +44,3 @@
     if my writing or code helps someone else, then i've done my job. i'm not a great 
     writer, but i'll still try to write regularly, whether it be about linux or something else.
     hopefully one day all my projects will live here.
-</p>

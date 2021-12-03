@@ -3,8 +3,8 @@
 
 <h3>on the kyle rittenhouse verdict</h3>
 
-<h4>foreward</h4>
-<p>
+## foreward
+
     it is worth noting that a racist, sexist, classist
     state or any affiliated entities should not be trusted
     to properly enforce a guilty verdict upon kyle rittenhouse.
@@ -13,10 +13,10 @@
     "there is no such thing as justice - in or out of court"<br>
     - clarence darrow
 </blockquote>
-</p>
 
-<h4>the verdict</h4>
-<p>
+
+## the verdict
+
     as the law is written in wisconsin, he is not guilty, but he should be.
     the implications regarding recklessness came into play when
     he brought a weapon to a chaotic situation, which is also where he 
@@ -25,10 +25,10 @@
     on social media that he wished he could shoot people. the is not an issue of
     gun laws - this is an issue of a man intentionally going to a civil rights
     protest with intent to kill protestors, succeeding, and walking free.
-</p>
 
-<h4>why the law involved doesn't matter</h4>
-<p>
+
+## why the law involved doesn't matter
+
     the above mentioned laws don't matter,
     as anyone with enough money to throw at lawyers
     can get away with anything. the law is not a magical
@@ -41,17 +41,17 @@
     a black person who actually defends themself with a weapon may be found guilty, and
     a not guilty verdict means more white supremacists will be able 
     to do the same thing rittenhouse did.
-</p>
 
-<h4>what this means</h4>
-<p>
+
+## what this means
+
     this verdict means that people can go to protests to kill people and get away with it.
     it seems that the old days of unarmed protests are disappearing (if not gone
     already), in favor of armed and violent protest.
-</p>
 
-<h4>closing</h4>
-<p>
+
+## closing
+
     the judge was also heavily biased, which should be evident to
     anyone who actually paid attention to the trial.
-</p>
+

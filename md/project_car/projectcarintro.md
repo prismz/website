@@ -3,16 +3,16 @@
 
 <h3>the beginning of the project car</h3>
 
-<h4>introduction</h4>
-<p>
+## introduction
+
     after a long wait for the mechanic, my car is finally in my
     driveway. there are many problems, most of which will be outlined here.
     i will be able to drive very soon (november 12th) so if you're reading 
     after the 12th i'll be on the road (and hopefully in this car)
-</p>
 
-<h4>about the car</h4>
-<p>
+
+## about the car
+
     the car is a 1990 toyota celica gts (with a 5 speed manual). it has this very ugly, dated, and 
     faded "sport" paint job on the outside. it is dark blue inside and outside.
     the car is a 2 door hatchback. the stock wheels are ugly, and the current 
@@ -21,10 +21,10 @@
     before i bought it, it had been sitting in a barn for over a year. i bought the car for relatively cheap.
     i wanted a cheap project car, preferably something japanese (though this car is the american version), 
     and i got what i wanted!
-</p>
 
-<h4>problems with the car</h4>
-<p>
+
+## problems with the car
+
     as it is now, there are many problems with the car (most of which are fairly minor,
     and almost all are fixable). currently here is my list of problems (sorted by importance,
     mechanical and safety issues first):
@@ -53,10 +53,10 @@
         <li class="strikethrough">the car has no owners or repair manual</li>
         <li>the headliner should be replaced</li>
     </ul>
-</p>
 
-<h4>plans</h4>
-<p>
+
+## plans
+
     as i fix things on the car i'll mark them off on the list above.
     most of the problems are minor and fixable. nothing wrong with the engine,
     so the car runs fine. i originally planned on painting the car black, but i decided 
@@ -65,11 +65,11 @@
     all the practical problems sorted out before the actual appearance, but the body 
     work and paint require reservations and take quite a while, so i'll have to plan around
     that. i found a manual on ebay, and it is currently on the way.
-</p>
 
-<h4>pictures</h4>
-<p>
+
+## pictures
+
     <ul style="list-style:disc; padding-left: 40px;">
         <li><a href="/m/celica1.jpeg">celica1.jpeg</a></li>
     </ul>
-</p>
+
