@@ -1,0 +1,22 @@
+body {
+    font-family: 'Aileron', 'Montserrat', sans-serif;
+    margin: 1em auto;
+    max-width: 40em;
+}
+
+h4 {
+    margin-bottom: 10px;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+a:visited {
+    color: #4e4eff;
+}
+
+a {
+    color: blue;
+}
