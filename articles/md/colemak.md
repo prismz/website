@@ -1,4 +1,4 @@
-### Why You Should Switch to Colemak
+### Switching to Colemak
 
 January 1st, 2022
 
