@@ -53,3 +53,6 @@ Here's what it looked like when I first got it:
 And here's what it looks like now:
 
 <img src="/media/celica2.jpeg">
+
+I still have a lot of things I want to do to it, and I'll do my best
+to update this article as I make changes.

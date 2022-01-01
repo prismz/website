@@ -23,3 +23,7 @@ h3, h4 {
 img {
     max-width: 40em;
 }
+
+pre, code {
+    background-color: #ebf1f5;;
+}
