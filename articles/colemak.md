@@ -1,7 +1,3 @@
-### Switching to Colemak
-
-January 1st, 2022
-
 I switched to Colemak about 2 months ago. I feel much more comfortable when typing,
 and programming doesn't put nearly as much strain on my wrists as it did when i used QWERTY.
 Installing Colemak was actually quite easy on both my Linux and Windows systems.
@@ -25,4 +21,4 @@ And the following for Colemak and QWERTY (Colemak being the default - You can sw
     exec setxkbmap -layout colemak,us -option grp:win_space_toggle &
 
 To toggle the layouts press the Super (Windows) key and the space bar. This keybind can be changed,
-and you can read the <a href="https://wiki.archlinux.org/title/Xorg/Keyboard_configuration#Using_setxkbmap">Arch Wiki Page</a> for more information.
+and you can read the [Arch Wiki Page](https://wiki.archlinux.org/title/Xorg/Keyboard_configuration#Using_setxkbmap) for more information.
