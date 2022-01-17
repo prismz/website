@@ -11,7 +11,7 @@ meaning no rebinding required for native Linux games. Games running through Prot
 to either have all their keys rebound, or you will have to temporarily switch to QWERTY when playing
 them (which is what I recommend).
 
-You can set Colemak as your keyboard layout in X by adding the command to your <code>~/.xinitrc</code>.
+You can set Colemak as your keyboard layout in X by adding the command to your `~/.xinitrc`.
 Add the following line for just Colemak:
 
     exec setxkbmap colemak &
