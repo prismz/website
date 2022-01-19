@@ -1,19 +1,19 @@
-path = haskelltime.md
+path = src/haskelltime.md
 title = Handling Time in Haskell
 date = 19 January, 2021
 author = Hasan Zahra
 
-path = youtube.md
+path = src/youtube.md
 title = Never Pay to Download Media Again
 date = 19 January, 2021
 author = Hasan Zahra
 
-path = colemak.md
+path = src/colemak.md
 title = Switching to Colemak
 date = 1 January, 2022
 author = Hasan Zahra
 
-path = celica.md
+path = src/celica.md
 title = My Toyota Celica
 date = 29 November, 2021
 author = Hasan Zahra
