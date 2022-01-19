@@ -25,5 +25,11 @@ img {
 }
 
 pre, code {
-    background-color: #ebf1f5;;
+    background-color: #ebf1f5;
+    font-size: 16px;
+    overflow: scroll;
+}
+
+h1 {
+    font-size: 30px;
 }

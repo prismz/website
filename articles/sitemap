@@ -1,3 +1,13 @@
+path = haskelltime.md
+title = Handling Time in Haskell
+date = 19 January, 2021
+author = Hasan Zahra
+
+path = youtube.md
+title = Never Pay to Download Media Again
+date = 19 January, 2021
+author = Hasan Zahra
+
 path = colemak.md
 title = Switching to Colemak
 date = 1 January, 2022
@@ -7,3 +17,4 @@ path = celica.md
 title = My Toyota Celica
 date = 29 November, 2021
 author = Hasan Zahra
+
