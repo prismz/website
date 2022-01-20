@@ -1,3 +1,8 @@
+path = src/mediaechochamber.md
+title = Escape the Echo Chamber
+date = 20 January, 2021
+author = Hasan Zahra
+
 path = src/haskelltime.md
 title = Handling Time in Haskell
 date = 19 January, 2021
@@ -17,4 +22,3 @@ path = src/celica.md
 title = My Toyota Celica
 date = 29 November, 2021
 author = Hasan Zahra
-
