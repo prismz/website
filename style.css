@@ -30,5 +30,13 @@ pre, code {
 }
 
 h1 {
+    font-size: 25px;
+}
+
+.title {
     font-size: 30px;
+}
+
+.nonazis {
+    height: 60px;
 }

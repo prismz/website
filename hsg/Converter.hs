@@ -26,7 +26,7 @@ convertArticle metadata = do
     let title = getMetadataValue "title" metadata "No Title"
     let date = getMetadataValue "date" metadata ""
     contents <- readFile workFile 
-    let footer = "" 
+    footer <- readFile footerPath
     let header = ""
     
     let dict = [

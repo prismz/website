@@ -2,7 +2,7 @@ The key to happiness is not worrying about the actions of others.
 You can't control what other people do. You can attempt to *influence* their actions,
 but this is almost always in vain. Seeds of thought must be planted in fertile soil, so to speak.
 
-## What about feelings?
+# What about feelings?
 
 You can't control your feelings, but you can control
 how you choose to handle them.

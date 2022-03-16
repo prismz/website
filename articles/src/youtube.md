@@ -11,7 +11,7 @@ websites. The complete list of supported sites can be found [here](https://gist.
 These programs are available in the repos for most distributions, 
 and you can easily download them on other platforms.
 
-## What's the difference?
+# What's the difference?
 
 `yt-dlp` is slightly less popular than youtube-dl,
 so you may have a harder time finding it in your repos.
@@ -24,7 +24,7 @@ I've noticed that bugs tend to be fixed faster in `yt-dlp`.
 
 Despite these differences, either one works for downloading media.
 
-## How to use it
+# How to use it
 
 The best place to read about all the options is the
 manual page ([youtube-dl](https://www.mankier.com/1/youtube-dl),

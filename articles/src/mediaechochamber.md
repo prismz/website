@@ -1,4 +1,4 @@
-## What is the echo chamber?
+# What is the echo chamber?
 
 The echo chamber refers to a place in which one's beliefs and ideas are never challenged,
 but only reaffirmed by those who think the same way. This leads the individual to a sort
@@ -26,7 +26,7 @@ accounts on Twitter.
 My point here is that people tend to pick a set of beliefs and only interact with communities that
 re-affirm these beliefs. This is very dangerous.
 
-## Identity
+# Identity
 
 People will take their opinions and make it their entire identity. The problem with this is that when
 someone criticises you or your ideas, it is no longer a matter of criticism, but a personal insult.
@@ -34,7 +34,7 @@ someone criticises you or your ideas, it is no longer a matter of criticism, but
 If my entire identity is centered around being a Posadist (funny I know), and someone criticises my 
 ideology, I am highly likely to take the criticism personally.
 
-## Escaping it
+# Escaping it
 
 To escape the echo chamber, interact with different communities, even those that hold beliefs entirely opposite
 to yours. This does not mean tolerate ad hominem. Your goal should be intellectual discourse with 
@@ -49,7 +49,7 @@ I check on the communities of programming languages and projects that I rarely u
 
 Vary your sources of incoming information. This allows you to see the world through more than one point of view.
 
-## Be skeptical
+# Be skeptical
 
 Despite these things, it is necessary to be **skeptical**. 
 Cross reference and use your critical thinking skills.
@@ -58,7 +58,7 @@ Realize that no one is above lying. People will try to exploit you.
 
 Propaganda is a tool utilized by all politicians and public figures.
 
-## Idols
+# Idols
 
 Avoid idolizing people. You will find that no one is perfect. No human is worthy of worship.
 

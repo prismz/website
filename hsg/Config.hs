@@ -3,7 +3,6 @@ module Config where
 import Util
 -- To combine paths, use function `pathJoin`.
 
-
 -- General Info
 siteName :: String
 siteName = "Hasan Zahra's Website"
@@ -27,6 +26,9 @@ indexTemplatePath = pathJoin templateDir "index.html"
 
 articleTemplatePath :: String
 articleTemplatePath = pathJoin templateDir  "article.html"
+
+footerPath :: String
+footerPath = pathJoin templateDir "footer.html"
 
 -- Other paths
 articleDir :: String
