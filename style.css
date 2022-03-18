@@ -37,6 +37,14 @@ h1 {
     font-size: 30px;
 }
 
-.nonazis {
-    height: 60px;
+.gentoo,
+.nginx,
+.git,
+.c-lang,
+.haskell,
+.nvim,
+.colemak,
+.linux-power,
+.deb-power {
+    height: 30px;
 }
