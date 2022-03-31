@@ -30,5 +30,4 @@ articleToPostsEntry article = "<tr>\n" ++ "<td><a href=\"" ++ path ++ "\">" ++ t
     path = pathJoin articleDir $ ((takeBaseName $ getMetadataValue "path" article "?") ++ ".html")
 
 sitemapToPosts :: [Metadata] -> String
-sitemapToPosts sitemap = concat $ map articleToPostsEntry sitemap where
-    f s = s
+sitemapToPosts sitemap = concat $ map articleToPostsEntry sitemap
