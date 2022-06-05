@@ -1,3 +1,8 @@
+path = src/notebook.md
+title = A Notebook Program written entirely in POSIX Shell
+date = 5 Jun, 2022
+author = Hasan Zahra
+
 path = src/gentooswitch.md
 title = Why I Switched to Gentoo
 date = 8 April, 2022

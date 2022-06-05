@@ -1,0 +1,158 @@
+#!/bin/sh
+
+get_entries() {
+    echo $(echo "$(ls -1 $1)" | grep -E "^[0-9]+$" | sort - -g)
+}
+
+next_entry() {
+    lv=$(echo "$1" | sed 's/ /\n/g' | tail -n 1)
+    nv=$(( $lv + 1 ))
+    echo $nv
+}
+
+# Shifts pages if one is missing.
+# i.e (1, 3, 4) -> (1, 2, 3)
+check_notebook() {
+    entries=$(get_entries $1)
+    journal=$(basename $1)
+
+    i=1
+    n=0
+    for old_name in $entries
+    do
+        if [ "$old_name" != "$i" ]; then
+            mv "$journal/$old_name" "$journal/$i" 
+            n=$(( $n + 1 ))
+        fi
+
+        i=$(( $i + 1 ))
+    done
+
+    next=$(next_entry "$entries")
+
+    if [ "$n" -ne "0" ]; then
+        echo "Shifted $n pages."
+    fi
+}
+
+# $1 = notebook path
+new_page() {
+    entries=$(get_entries $1)
+
+    next=$(next_entry "$entries")
+    path="$1/$next"
+
+    timestamp=$(date +"%a %b %d %I:%M:%S %p")
+
+    echo "$timestamp" > "$path"
+    $EDITOR "$path"
+
+    # check that changes were made, we don't 
+    # want to store empty pages
+
+    newcontents=$(cat $path)
+    if [ "$newcontents" = "$timestamp" ]; then
+        rm "$path"
+    fi
+}
+
+simple_du() {
+    echo $(du -h "$1" | sed -e 's/\s.*$//')
+}
+
+notebook_info() {
+    size=$(simple_du $1)
+    pages=$(get_entries "$1" | wc -w)
+    created=$(stat "$1" | grep "Birth" | sed 's/Birth: //g' | cut -b 2-11)
+    largest=$(ls -1S "$1" | head -n 1)
+    echo "Size: $size"
+    echo "Pages: $pages"
+    echo "Created: $created"
+    echo "Largest page: p$largest ($(simple_du "$1/$largest"))"
+}
+
+backup_notebook() {
+    timestamp=$(date +"%Y-%m-%d-%H:%M:%S")
+    path="$1-$timestamp.tar"
+
+    # use --force-local because tar interprets the `:` from the timestamp
+    # as a file on another machine.
+    tar --force-local -zcf "$path" "$1"
+    gzip "$path"
+    ls "$path.gz"
+}
+
+edit_page() {
+    $EDITOR "$1/$2"
+}
+
+main() {
+    if [ "$1" != "" ]; then
+        if [ ! -e $1 ]; then
+            echo "Couldn't access notebook."
+            exit 1
+        fi
+
+    else
+        echo "Please provide a notebook directory."
+        exit 1
+    fi
+
+    if [ "$2" = "" ]; then
+        echo "Please provide one of the following commands:"
+        echo "  \"new\": create a new page using \$EDITOR ($EDITOR)."
+        echo "  \"edit [page]\": edit a page using \$EDITOR ($EDITOR)."
+        echo "  \"view [page]\": view a page using \$PAGER ($PAGER)."
+        echo "  \"remove [page]\": remove a page."
+        echo "  \"info\": print notebook information."
+        echo "  \"backup\": create notebook backup."
+        exit 1
+    fi
+
+    notebook=$(basename "$1")
+    check_notebook "$notebook"
+
+    if [ "$2" = "new" ]; then
+        new_page "$notebook"
+    fi
+
+    if [ "$2" = "edit" ]; then
+        if [ "$3" = "" ]; then
+            echo "Please provide a page."
+            exit 1
+        fi
+
+       edit_page "$notebook" "$3"
+    fi
+
+    if [ "$2" = "view" ]; then
+        if [ "$3" = "" ]; then
+            echo "Please provide a page."
+            exit 1
+        fi
+
+        $PAGER "$notebook/$3"
+    fi
+    
+    if [ "$2" = "remove" ]; then
+        if [ "$3" = "" ]; then
+            echo "Please provide a page."
+            exit 1
+        fi
+
+        rm -rf "$notebook/$3"
+
+        # fix the pages
+        check_notebook "$notebook" 
+    fi
+
+    if [ "$2" = "info" ]; then
+        notebook_info "$notebook"
+    fi
+
+    if [ "$2" = "backup" ]; then
+        backup_notebook "$notebook"
+    fi
+}
+
+main $@

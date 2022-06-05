@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    
+    <title>A Notebook Program written entirely in POSIX Shell - Hasan Zahra's Website</title>
+</head>
+<body>
+
+
+
+<h1 class="title">A Notebook Program written entirely in POSIX Shell</h1>
+<p>
+<a href="/posts.html">&lt; Posts</a>
+</p><p>
+5 Jun, 2022</p>
+
+<p>I like to keep notebook-style directories on my computer for various
+reasons. I use them to journal and keep track of files, among other
+things.</p>
+
+<p>I decided that to learn POSIX shell, I&#8217;d rewrite my old notebook application
+that I wrote in Haskell a while back. The code may not be the most perfect 
+POSIX shell code, but I think that it&#8217;s fairly easy to understand.</p>
+
+<p>A &#8220;notebook&#8221; is just a directory with a list of files. All files with names
+that are just numbers without an extension are treated as pages. When you
+use the program to access a notebook, it checks to see if any pages have been
+removed, and fixes the order of the pages.</p>
+
+<p>For example, a notebook with 4 pages should look as follows: (1, 2, 3, 4).
+If the user decides to delete a page (let&#8217;s say page 2), the notebook
+now looks like (1, 3, 4). The program will check for this and fix it to
+where it properly displays as (1, 2, 3) after the removal of a page.</p>
+
+<p>Usage is as follows:</p>
+
+<pre><code>notebook [notebook path] [action] [page (if needed)]
+</code></pre>
+
+<p><code>action</code> must be one of the following:</p>
+
+<ol>
+<li><code>new</code> - create and edit a new page using $EDITOR.</li>
+<li><code>edit [page]</code> - edit an existing page using $EDITOR.</li>
+<li><code>view [page]</code> - view a page using $PAGER.</li>
+<li><code>remove [page]</code> - remove a page.</li>
+<li><code>info</code> - print information on the notebook (size, number of entries, etc.)</li>
+<li><code>backup</code> - create a <code>.tar.gz</code> backup in the current directory of the notebook.</li>
+</ol>
+
+<h2 id="source">Source</h2>
+
+<p>You can view the source <a href="/media/notebook">here</a>.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>To install the program, just run the following commands:</p>
+
+<pre><code>wget https:&#47;&#47;hasanzahra.xyz&#47;media&#47;notebook
+chmod +x notebook
+cp notebook &#47;usr&#47;local&#47;bin&#47;  # This must be run as root.
+</code></pre>
+
+<p>You can change <code>&#47;usr&#47;local&#47;bin&#47;</code> to anywhere on <code>$PATH</code>, but I recommend
+that location for programs and scripts not installed by the package manager.</p>
+
+
+
+</body>
+</html>
