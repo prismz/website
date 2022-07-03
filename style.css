@@ -21,6 +21,7 @@ p {
 pre, code {
     background-color: #ebf1f5;
     font-size: 15px;
+    overflow:scroll;
 }
 
 a {
