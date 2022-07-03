@@ -18,6 +18,11 @@ p {
     text-align: justify;
 }
 
+pre, code {
+    background-color: #ebf1f5;
+    font-size: 15px;
+}
+
 a {
     color: #6a6a6a;
 }
