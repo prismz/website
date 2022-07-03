@@ -1,0 +1,39 @@
+path = articles/notebook.md
+title = A Notebook Program written entirely in POSIX Shell
+date = 5 Jun, 2022
+author = Hasan Zahra
+
+path = articles/gentooswitch.md
+title = Why I Switched to Gentoo
+date = 8 April, 2022
+author = Hasan Zahra
+
+path = articles/conformism.md
+title = Pre-Packaged Opinions and Conformism
+date = 30 March, 2022
+author = Hasan Zahra
+
+path = articles/mediaechochamber.md
+title = Escape the Echo Chamber
+date = 20 January, 2022
+author = Hasan Zahra
+
+path = articles/haskelltime.md
+title = Handling Time in Haskell
+date = 19 January, 2022
+author = Hasan Zahra
+
+path = articles/youtube.md
+title = Never Pay to Download Media Again
+date = 19 January, 2022
+author = Hasan Zahra
+
+path = articles/colemak.md
+title = Switching to Colemak
+date = 1 January, 2022
+author = Hasan Zahra
+
+path = articles/celica.md
+title = My Toyota Celica
+date = 29 November, 2021
+author = Hasan Zahra

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    
+    <title>Never Pay to Download Media Again - Hasan Zahra's Website</title>
+</head>
+<body>
+
+<div class="header">
+    <span class="header-item"><a href="/">Home</a></span>
+    <span class="header-item"><a href="/posts.html">Posts</a></span>
+    <span class="header-item"><a href="https://github.com/prismz">GitHub</a></span>
+    <span class="header-item"><a href="mailto:hasan@hasanzahra.xyz">Contact</a></span>
+    <span class="header-item"><a href="/searx">SearXNG</a></span>
+</div>
+
+<h1 class="title">Never Pay to Download Media Again</h1>
+
+<p>
+Jan 19, 2022
+</p>
+
+<p>When you find something you&#8217;d like to download, websites will either 
+ask you to pay, make an account, or both. Some sites do not give
+you the option to download at all.</p>
+
+<p>Enter <a href="https://youtube-dl.org/">youtube-dl</a> and its forked
+version <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a>.</p>
+
+<p>Despite the name, both programs can download from many different
+websites. The complete list of supported sites can be found <a href="https://gist.github.com/sky-y/1fac37a3c9db71e6af78">here</a>.</p>
+
+<p>These programs are available in the repos for most distributions, 
+and you can easily download them on other platforms.</p>
+
+<h1 id="whats-the-difference">What&#8217;s the difference?</h1>
+
+<p><code>yt-dlp</code> is slightly less popular than youtube-dl,
+so you may have a harder time finding it in your repos.</p>
+
+<p>If you can get it, use <code>yt-dlp</code>, otherwise, use <code>youtube-dl</code>.</p>
+
+<p><code>yt-dlp</code> is &#8220;A youtube-dl fork with additional features and fixes&#8221;.</p>
+
+<p>I&#8217;ve noticed that bugs tend to be fixed faster in <code>yt-dlp</code>.</p>
+
+<p>Despite these differences, either one works for downloading media.</p>
+
+<h1 id="how-to-use-it">How to use it</h1>
+
+<p>The best place to read about all the options is the
+manual page (<a href="https://www.mankier.com/1/youtube-dl">youtube-dl</a>,
+<a href="https://www.mankier.com/1/yt-dlp">yt-dlp</a>). Some basic examples are
+listed below. You may need to replace <code>youtube-dl</code> with <code>yt-dlp</code> depending on which
+one you&#8217;re using.</p>
+
+<p>To extract audio, use the following command:</p>
+
+<pre><code>youtube-dl -x --audio-format mp3 [url]
+</code></pre>
+
+<p>To download video, just run the command with the url as the argument. For example:</p>
+
+<pre><code>youtube-dl [url]
+</code></pre>
+
+
+</body>
+</html>

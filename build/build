@@ -1,0 +1,106 @@
+#!/bin/sh
+
+template="../templates/article.html"
+stylepath="/style.css"
+sitename="Hasan Zahra's Website"
+footer="$(cat ../templates/footer.html)"
+header="$(cat ../templates/header.html)"
+
+post_template_path="../templates/posts.html"
+post_dest_path="../posts.html"
+index_template_path="../templates/index.html"
+index_dest_path="../index.html"
+
+article_dest_dir="../articles/html/"
+article_access_path="/articles/html"
+
+die() {
+    >&2 echo -e "$1" 
+    exit 1
+}
+
+insert_data() {
+    dest_file="$1"
+
+    ./replace "%STYLEPATH%" "$stylepath" "$dest_file"
+    ./replace "%SITENAME%" "$sitename" "$dest_file"
+    ./replace "%FOOTER%" "$footer" "$dest_file"
+    ./replace "%HEADER%" "$header" "$dest_file"
+} 
+
+convert_entry() {
+    if [ "$1" = "" ]; then
+        die "empty entry path" 
+    fi
+
+    # get metadata
+    meta=$(sed 2q "$1")
+    title=$(echo "$meta" | sed 1q)
+    date=$(echo "$meta" | tail -n 1)
+    nlines=$(wc -l $1 | sed 's/ /\n/g' | sed 1q)
+    contents=$(tail -n $(("$nlines" - 2)) "$1")
+
+    # save and convert
+    workfile=".tmp-$(basename -s ".md" $1)"
+    echo "$contents" > "$workfile"
+    htmlname=".$(basename -s ".md" "$1").html"
+    lowdown "$workfile" > "$htmlname"
+    converted=$(cat "$htmlname")
+    dest_file="$article_dest_dir/$(basename -s ".md" "$1").html"
+
+
+    # copy the template
+    cp "$template" "$dest_file"
+
+    # begin inserting the contents
+    insert_data "$dest_file"
+    ./replace "%TITLE%" "$title" "$dest_file"
+    ./replace "%DATE%" "$date" "$dest_file" 
+    ./replace "%CONTENTS%" "$converted" "$dest_file" 
+
+    # move completed file to final location
+    # cp "$dest_file" "$article_dest_dir"
+
+    # remove temp files
+    rm "$workfile"
+    rm "$htmlname"
+
+    echo "$title"
+}
+
+convert_all_entries() {
+    dir="$1"
+
+    cp "$post_template_path" ".posts.html"
+    insert_data ".posts.html"
+
+    for path in $(ls -t --time=birth ../articles/*.md)
+    do
+        rpath="$(basename -s .md "$path")"
+        title=$(convert_entry "$dir/$rpath.md")
+        date=$(cat "$dir/$rpath.md" | head -n 2 | tail -n 1)
+        echo "$title"
+       
+        echo "<tr>" >> postlist
+        echo "<td><a href=\"$article_access_path/$rpath.html\">$title</a></td>" >> postlist
+        echo "<td>$date</td>" >> postlist
+        echo "</tr>" >> postlist
+    done
+
+    cp "$post_template_path" "$post_dest_path"
+    ./replace "%ARTICLELIST%" "$(cat postlist)" ".posts.html"
+
+    cp .posts.html "$post_dest_path"
+    rm postlist
+    rm .posts.html
+
+    # index.html
+
+    cp "../templates/index.html" ".index.html"
+    insert_data ".index.html"
+    cp ".index.html" "$index_dest_path"
+    rm ".index.html"
+}
+
+convert_all_entries "../articles"
+
