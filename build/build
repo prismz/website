@@ -12,7 +12,7 @@ index_template_path="../templates/index.html"
 index_dest_path="../index.html"
 
 article_dest_dir="../articles/html/"
-article_access_path="/articles/html"
+article_access_path="/articles/html/"
 
 die() {
     >&2 echo -e "$1" 
@@ -74,7 +74,7 @@ convert_all_entries() {
     cp "$post_template_path" ".posts.html"
     insert_data ".posts.html"
 
-    for path in $(ls -t --time=birth ../articles/*.md)
+    for path in $(stat -c '%w %n' ../articles/*.md | sort -nr | awk 'NF>1{print $NF}')
     do
         rpath="$(basename -s .md "$path")"
         title=$(convert_entry "$dir/$rpath.md")
@@ -103,4 +103,3 @@ convert_all_entries() {
 }
 
 convert_all_entries "../articles"
-
