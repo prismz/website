@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cp ../templates/cool.html ../cool.html
+./insert_meta ../cool.html

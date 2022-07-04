@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="%STYLEPATH%">
+    
+    <title>Contact - %SITENAME%</title>
+</head>
+<body>
+
+%HEADER%
+
+<h1 class="title">Contact</h1>
+
+<p>
+    hasan at hasanzahra dot xyz<br>
+
+    Or, click <a href="javascript:location='mailto:\u0068\u0061\u0073\u0061\u006e\u0040\u0068\u0061\u0073\u0061\u006e\u007a\u0061\u0068\u0072\u0061\u002e\u0078\u0079\u007a';void 0">here</a>.
+    This won't work if you have JavaScript disabled.
+</p>
+
+<p>
+<b>Why this page instead of a plain href with mailto?</b><br>
+    After setting up a .onion url, I realized that typically Tor
+    has JavaScript disabled using NoScript. Since I needed JavaScript
+    for email obfuscation, I tried using the &lt;noscript&gt; tag,
+    but NoScript apparently disables it by default as well. I dislike
+    contact forms, so I figured setting up a separate page like this
+    would take care of these problems.
+</p>
+
+%FOOTER%
+</body>
+</html>

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cp ../templates/contact.html ../contact.html
+
+./insert_meta ../contact.html

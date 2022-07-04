@@ -15,3 +15,9 @@ done
 
 # Index.html
 ./index-hook ../templates/index.html ../index.html
+
+# Contact.html
+./contact-hook
+
+# Cool.html
+./cool-hook

@@ -46,6 +46,15 @@ a:visited {
     padding-left: 10px;
 }
 
+.header {
+    text-align: center;
+}
+
 h1 {
     font-size: 20px;
+}
+
+.title,
+.date {
+    text-align: center;
 }
