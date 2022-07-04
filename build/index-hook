@@ -1,0 +1,23 @@
+#!/bin/sh
+
+src="$1"
+dest="$2"
+
+die() {
+    >&2 echo -e "$1" 
+    exit 1
+}
+
+if [ "$1" = "" ]; then
+    die "provide src path."
+fi
+
+if [ "$2" = "" ]; then
+    die "provide dest path."
+fi
+
+# copy.
+cp $src $dest
+
+# insert metadata.
+./insert_meta $dest

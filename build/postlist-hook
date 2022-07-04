@@ -1,0 +1,49 @@
+#!/bin/sh
+
+src="$1"
+dest="$2"
+
+die() {
+    >&2 echo -e "$1" 
+    exit 1
+}
+
+if [ "$1" = "" ]; then
+    die "provide src path."
+fi
+
+if [ "$2" = "" ]; then
+    die "provide dest path."
+fi
+
+#if [ "$3" = ""]; then
+    #die "provide articledir."
+#fi
+
+# copy and insert metadata.
+cp $src $dest
+./insert_meta $dest
+
+# change the access and modification dates so that we can make the post list in order
+for article in ../articles/*.md
+do
+    date=$(head -n 2 $article | tail -n 1)
+    sort_format=$(date --date="$date" +"%Y%m%d0000")
+    touch -m -a -t "$sort_format" "$article"
+done
+
+for article in $(ls -1t ../articles/*.md)
+do
+    bn=$(basename -s ".md" $article)
+    title=$(head -n 1 $article)
+    date=$(head -n 2 $article | tail -n 1)
+
+    echo "<tr>" >> work
+    echo "<td><a href=\"../articles/html/$bn.html\">$title</a></td>" >> work
+    echo "<td>$date</td>" >> work
+    echo "</tr>" >> work
+done
+
+./replace "%ARTICLELIST%" "$(cat work)" "$dest"
+
+rm work

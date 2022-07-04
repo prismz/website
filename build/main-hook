@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Clean
+rm ../articles/html/*.html
+
+# Articles
+for article in ../articles/*.md
+do
+    bn=$(basename -s ".md" $article)
+    ./article-hook "$article" "../articles/html/$bn.html"
+done
+
+# Postlist
+./postlist-hook ../templates/posts.html ../posts.html
+
+# Index.html
+./index-hook ../templates/index.html ../index.html

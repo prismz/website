@@ -1,0 +1,21 @@
+#!/bin/sh
+
+stylepath="/style.css"
+sitename="Hasan Zahra's Website"
+footer="$(cat ../templates/footer.html)"
+header="$(cat ../templates/header.html)"
+
+die() {
+    >&2 echo -e "$1" 
+    exit 1
+}
+
+if [ "$1" = "" ]; then
+    die "insert into what?"
+fi
+
+dest_file="$1"
+./replace "%STYLEPATH%" "$stylepath" "$dest_file"
+./replace "%SITENAME%" "$sitename" "$dest_file"
+./replace "%FOOTER%" "$footer" "$dest_file"
+./replace "%HEADER%" "$header" "$dest_file"

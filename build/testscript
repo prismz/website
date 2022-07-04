@@ -1,6 +1,0 @@
-#!/bin/sh
-
-for item in $(ls -t --time=birth ../articles/*.md)
-do
-    echo $item
-done
