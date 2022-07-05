@@ -29,7 +29,7 @@ date=$(cat $src | head -n 2 | tail -n 1)
 ./replace "%DATE%" "$date" $dest
 
 # Create a file without the metadata for lowdown.
-nlines=$(( "$(wc -l $src | sed 's/ /\n/g' | head -n 1)" - 2 ))
+nlines=$(( $(wc -l $src | sed 's/ /\n/g' | head -n 1) - 2 ))
 tail -n "$nlines" $src > .srcwork
 
 # convert and insert the article's contents.
