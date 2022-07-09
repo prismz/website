@@ -2,6 +2,7 @@
 
 stylepath="/style.css"
 sitename="Hasan Zahra's Website"
+siteurl="https://hasanzahra.xyz"
 footer="$(cat ../templates/footer.html)"
 header="$(cat ../templates/header.html)"
 
@@ -19,3 +20,4 @@ dest_file="$1"
 ./replace "%SITENAME%" "$sitename" "$dest_file"
 ./replace "%FOOTER%" "$footer" "$dest_file"
 ./replace "%HEADER%" "$header" "$dest_file"
+./replace "%SITEURL%" "$siteurl" "$dest_file"

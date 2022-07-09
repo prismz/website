@@ -1,0 +1,25 @@
+#!/bin/sh
+
+cp ../templates/rss.xml ../rss/rss.xml
+./insert_meta ../rss/rss.xml
+
+touch .rsswork
+
+for article in ../articles/*.md
+do
+    bn=$(basename -s ".md" $article)
+    title=$(cat $article | head -n 1 )
+    date=$(cat $article | head -n 2 | tail -n 1)
+
+    echo "<item>" >> .rsswork
+    echo "<title>$title</title>" >> .rsswork
+    echo "<link>%SITEURL%/articles/html/$bn.html</link>" >> .rsswork
+    echo "<description>$title</description>" >> .rsswork
+    echo "<pubDate>$date</pubDate>" >> .rsswork
+    echo "</item>" >> .rsswork
+done
+
+./insert_meta .rsswork
+./replace "%CONTENTS%" "$(cat .rsswork)" ../rss/rss.xml
+
+rm .rsswork
