@@ -1,5 +1,5 @@
-Why I Switched to Gentoo
-Apr 8, 2022
+Why I switched to Gentoo
+Apr 08, 2022
 
 A few days ago, I was curious and decided to check how long I had been running
 Gentoo. If you're curious, the following command should tell you when your

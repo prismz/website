@@ -1,4 +1,4 @@
-Pre-Packaged Opinions and Conformism
+Pre-packaged opinions and conformism
 Mar 30, 2022
 
 

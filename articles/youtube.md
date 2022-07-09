@@ -1,4 +1,4 @@
-Never Pay to Download Media Again
+Never pay to download media again
 Jan 19, 2022
 
 When you find something you'd like to download, websites will either 

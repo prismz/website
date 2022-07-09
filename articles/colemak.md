@@ -1,5 +1,5 @@
 Switching to Colemak
-Jan 1, 2022
+Jan 01, 2022
 
 I switched to Colemak about 2 months ago. I feel much more comfortable when typing,
 and programming doesn't put nearly as much strain on my wrists as it did when i used QWERTY.

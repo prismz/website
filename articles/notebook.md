@@ -1,4 +1,4 @@
-A Notebook Program written entirely in POSIX Shell
+A notebook program written entirely in POSIX shell
 Jun 5, 2022
 
 I like to keep notebook-style directories on my computer for various

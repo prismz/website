@@ -1,4 +1,4 @@
-Handling Time in Haskell
+Handling time in Haskell
 Jan 19, 2022
 
 Haskell's method of handling time may be a bit confusing
