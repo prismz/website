@@ -8,6 +8,9 @@ body {
     max-width: 500px;
     margin: 10px auto;
     word-wrap: break-word;
+
+    background-color: black;
+    color: lightgray;
 }
 
 img {
@@ -19,17 +22,19 @@ p {
 }
 
 pre, code {
-    background-color: #ebf1f5;
+    /*background-color: #ebf1f5;*/
+    background-color: #333;
+    /*color: white;*/
     font-size: 15px;
     overflow:scroll;
 }
 
 a {
-    color: #6a6a6a;
+    color: darkgray;
 }
 
 a:visited {
-    color: #222;
+    color: #6a6a6a;
 }
 
 .frontpage-header {
