@@ -1,5 +1,5 @@
 A notebook program written entirely in POSIX shell
-Jun 5, 2022
+Jun 05, 2022
 
 I like to keep notebook-style directories on my computer for various
 reasons. I use them to journal and keep track of files, among other
