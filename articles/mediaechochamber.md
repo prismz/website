@@ -43,7 +43,7 @@ To escape the echo chamber, interact with different communities, even those that
 to yours. This does not mean tolerate ad hominem. Your goal should be intellectual discourse with 
 those who may hold beliefs different to yours.
 
-I am a Trotskyist, and yet I am in many Marxist-Leninist, Capitalist, Conservative, and Liberal communities.
+I am a moderate leftist, and yet I am in many Marxist-Leninist, Capitalist, Conservative, and Liberal communities.
 
 I am an atheist, and I still participate in religious discourse from time to time. I am currently reading
 the Bible and the Quran (you don't have to read these books to be an atheist). My point here
