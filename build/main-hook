@@ -22,4 +22,8 @@ done
 # Cool.html
 ./cool-hook
 
+# RSS
 ./rss-hook
+
+# Quotes
+./quotes-hook
