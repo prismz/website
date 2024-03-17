@@ -7,79 +7,10 @@
   <description>Hasan Zahra's Website</description>
 
   <item>
-<title>My Toyota Celica</title>
-<link>https://hasanzahra.xyz/articles/html/celica.html</link>
-<description>My Toyota Celica</description>
-<pubDate>Nov 29, 2021</pubDate>
-</item>
-<item>
-<title>An Update On The Celica</title>
-<link>https://hasanzahra.xyz/articles/html/celicaupdate.html</link>
-<description>An Update On The Celica</description>
-<pubDate>Jun 01, 2023</pubDate>
-</item>
-<item>
-<title>Switching to Colemak</title>
-<link>https://hasanzahra.xyz/articles/html/colemak.html</link>
-<description>Switching to Colemak</description>
-<pubDate>Jan 01, 2022</pubDate>
-</item>
-<item>
-<title>Pre-packaged opinions and conformism
-</title>
-<link>https://hasanzahra.xyz/articles/html/conformism.html</link>
-<description>Pre-packaged opinions and conformism
-</description>
-<pubDate>Mar 30, 2022
-</pubDate>
-</item>
-<item>
-<title>Why I switched to Gentoo</title>
-<link>https://hasanzahra.xyz/articles/html/gentooswitch.html</link>
-<description>Why I switched to Gentoo</description>
-<pubDate>Apr 08, 2022</pubDate>
-</item>
-<item>
-<title>Handling time in Haskell</title>
-<link>https://hasanzahra.xyz/articles/html/haskelltime.html</link>
-<description>Handling time in Haskell</description>
-<pubDate>Jan 19, 2022</pubDate>
-</item>
-<item>
-<title>A Review Of The Orient Kamasu</title>
-<link>https://hasanzahra.xyz/articles/html/kamasu.html</link>
-<description>A Review Of The Orient Kamasu</description>
-<pubDate>Jun 01, 2023</pubDate>
-</item>
-<item>
-<title>Escape the Echo Chamber</title>
-<link>https://hasanzahra.xyz/articles/html/mediaechochamber.html</link>
-<description>Escape the Echo Chamber</description>
-<pubDate>Jan 20, 2022</pubDate>
-</item>
-<item>
-<title>A notebook program written entirely in POSIX shell</title>
-<link>https://hasanzahra.xyz/articles/html/notebook.html</link>
-<description>A notebook program written entirely in POSIX shell</description>
-<pubDate>Jun 05, 2022</pubDate>
-</item>
-<item>
-<title>Some Helpful Self-Hosting Resources And Tips</title>
-<link>https://hasanzahra.xyz/articles/html/selfhosting.html</link>
-<description>Some Helpful Self-Hosting Resources And Tips</description>
-<pubDate>Jun 01, 2023</pubDate>
-</item>
-<item>
-<title>Why I use a very simple shell prompt</title>
-<link>https://hasanzahra.xyz/articles/html/shellprompt.html</link>
-<description>Why I use a very simple shell prompt</description>
-<pubDate>Jul 09, 2022</pubDate>
-</item>
-<item>
-<title>Never pay to download media again</title>
-<link>https://hasanzahra.xyz/articles/html/youtube.html</link>
-<description>Never pay to download media again</description>
-<pubDate>Jan 19, 2022</pubDate>
+<title></title>
+<link>https://hasanzahra.xyz/articles/html/*.html</link>
+<description></description>
+<pubDate></pubDate>
 </item>
 </channel>
 </rss> 
