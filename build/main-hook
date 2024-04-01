@@ -27,3 +27,6 @@
 
 # Quotes
 ./quotes-hook
+
+# Software list
+./software-hook ../templates/software.html ../software.html
