@@ -63,3 +63,7 @@ h1 {
 .date {
     text-align: center;
 }
+
+.langlogo {
+        max-width: 14px;
+}
