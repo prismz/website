@@ -1,4 +1,0 @@
-#!/bin/sh
-
-cp ../templates/quotes.html ../quotes.html
-./insert_meta ../quotes.html
