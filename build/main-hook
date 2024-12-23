@@ -20,7 +20,7 @@
 ./contact-hook
 
 # Cool.html
-./cool-hook
+# ./cool-hook
 
 # RSS
 # ./rss-hook
